@@ -144,3 +144,4 @@ vite.config.ts.timestamp-*
 target/
 **/target/
 **/test_snapshots/
+demo-videos/
