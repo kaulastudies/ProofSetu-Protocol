@@ -1,8 +1,16 @@
 # Phase 2 Stellar/Soroban Testnet Plan
 
-This document defines the Phase 2 plan for ProofSetu Protocol.
+This document defines the Phase 2 plan and current progress for ProofSetu Protocol.
 
-Phase 1 completed the Web MVP with local proof generation. Phase 2 will add Stellar/Soroban testnet integration so proof records can be anchored and verified on-chain.
+Phase 1 completed the Web MVP with local proof generation. Phase 2 adds Stellar/Soroban testnet integration so proof records can be anchored and verified on-chain.
+
+---
+
+## Current Phase
+
+Phase 2 — Stellar/Soroban Testnet
+
+Status: Contract build, local tests, testnet deployment, and testnet proof verification completed.
 
 ---
 
@@ -10,7 +18,7 @@ Phase 1 completed the Web MVP with local proof generation. Phase 2 will add Stel
 
 The goal of Phase 2 is to move ProofSetu Protocol from local proof generation to Stellar/Soroban testnet-based proof anchoring.
 
-Users should be able to:
+Users should eventually be able to:
 
 1. Create a proof record in the web app.
 2. Generate a proof hash.
@@ -21,138 +29,161 @@ Users should be able to:
 
 ---
 
-## Current Phase 1 Status
+## Completed Phase 2 Work
 
 Completed:
 
-* Landing page
-* Create Proof page
-* Local SHA-256 proof hash generation
-* Generated proof record preview
-* JSON proof output
-* Public sample verification page
-* Vercel deployment
-* Documentation
-* Screenshots
-* v0.1.0 release
+* Soroban proof registry contract scaffold added
+* Proof record structure added
+* create_proof function added
+* get_proof function added
+* verify_proof function added
+* Stellar CLI installed in GitHub Codespaces
+* wasm32v1-none Rust target confirmed
+* Release overflow checks enabled in Cargo.toml
+* Contract build validated successfully
+* Cargo.lock committed
+* target output ignored
+* Local contract tests added
+* Local tests passed
+* Stellar testnet deployment notes added
+* Proof registry contract deployed to Stellar testnet
+* Testnet proof record created
+* Testnet proof record retrieved
+* Correct hash verification returned true
+* Wrong hash verification returned false
 
 ---
 
-## Phase 2 Deliverables
+## Contract Build Result
 
-### 1. Soroban Proof Registry Contract
+* Stellar CLI version: 27.0.0
+* Wasm file: target/wasm32v1-none/release/proof_registry.wasm
+* Wasm hash: 743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166
+* Wasm size: 3928 bytes optimized
+* Exported functions:
 
-Build a simple Soroban smart contract for proof records.
-
-Planned functions:
-
-* `create_proof`
-* `get_proof`
-* `verify_proof`
-
-The contract should remain small, auditable, and easy to test.
+  * create_proof
+  * get_proof
+  * verify_proof
 
 ---
 
-### 2. Proof Data Model
+## Local Test Result
 
-A proof record should include:
+Local tests passed.
+
+Result:
+
+* 3 passed
+* 0 failed
+* 0 ignored
+
+Test coverage:
+
+* Create proof record
+* Retrieve proof record
+* Verify matching proof hash
+* Reject mismatched proof hash
+* Reject duplicate proof ID
+
+---
+
+## Stellar Testnet Deployment
+
+Network:
+
+Stellar testnet
+
+Contract ID:
+
+CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ
+
+Deployment transaction:
+
+5ee448eb186c966fe6965fa7282b94d78a96df4e596dd9d0f6326cf3d0f6261b
+
+Create proof transaction:
+
+8a7fd049fcaf57e0c438a1b521b08cd30afe762cd6b74c172c302faccd98f132
+
+Wasm hash:
+
+743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166
+
+Deployer public address:
+
+GAT2L4GYPN2TST44AQA6QFVNWB4BUM7SXC73B4D5Y7PA4YRNHCLL
+
+Sample proof ID:
+
+PS-TESTNET-001
+
+Correct hash:
+
+sample_testnet_hash_001
+
+---
+
+## Testnet Invocation Result
+
+The deployed contract was tested successfully on Stellar testnet.
+
+Function results:
+
+* create_proof returned true
+* get_proof returned the stored proof record
+* verify_proof with correct hash returned true
+* verify_proof with wrong hash returned false
+
+Stored proof record:
+
+{
+"creator": "proofsetu_testnet_deployer",
+"event_hash": "sample_testnet_hash_001",
+"proof_type": "freelancer_milestone",
+"reference_id": "PROOFSETU-TESTNET-001",
+"status": "created",
+"timestamp": "2026-06-29T00:00:00Z"
+}
+
+This confirms that the Soroban proof registry contract can create, retrieve, and verify workflow proof records on Stellar testnet.
+
+---
+
+## Current Contract Functions
+
+### create_proof
+
+Creates a new proof record on the contract.
+
+Inputs:
 
 * Proof ID
 * Proof type
 * Event hash
-* Creator wallet
-* Timestamp
+* Creator
 * Reference ID
-* Network
-* Status
+* Timestamp
 
-Private documents should never be stored on-chain.
+Behavior:
 
----
+* Stores proof metadata
+* Prevents duplicate proof IDs
+* Sets proof status as created
 
-### 3. Stellar Testnet Deployment
+### get_proof
 
-Deploy the proof registry contract on Stellar testnet.
+Retrieves a proof record by proof ID.
 
-Publish:
+### verify_proof
 
-* Contract ID
-* Deployment notes
-* Example testnet transaction
-* Contract usage instructions
+Verifies whether a submitted event hash matches the stored proof hash.
 
----
+Returns:
 
-### 4. Web App Integration
-
-Update the Web MVP to support:
-
-* Wallet connection
-* On-chain proof creation
-* On-chain proof retrieval
-* On-chain proof verification
-* UI status showing local proof vs testnet proof
-
----
-
-### 5. Documentation
-
-Add or update:
-
-* Contract README
-* Testnet deployment guide
-* Updated architecture document
-* Updated demo walkthrough
-* Updated grant readiness document
-* Screenshots of testnet proof flow
-
----
-
-## Phase 2 Milestones
-
-### Milestone 1 — Contract Draft
-
-Deliverables:
-
-* Basic proof registry contract
-* Contract data model
-* Local contract tests
-* Contract documentation
-
----
-
-### Milestone 2 — Testnet Deployment
-
-Deliverables:
-
-* Contract deployed on Stellar testnet
-* Contract ID published
-* Sample proof creation transaction
-* Testnet deployment guide
-
----
-
-### Milestone 3 — Web App Integration
-
-Deliverables:
-
-* Wallet connection added
-* Create Proof page writes hash to testnet
-* Verification page retrieves proof data
-* UI displays on-chain verification status
-
----
-
-### Milestone 4 — Phase 2 Demo
-
-Deliverables:
-
-* Live updated demo
-* Screenshots
-* Walkthrough notes
-* Updated README
-* Updated grant readiness summary
+* true if the hash matches
+* false if the hash does not match
 
 ---
 
@@ -173,7 +204,37 @@ Do not store:
 * Wallet private keys
 * Seed phrases
 
-Only proof hashes and verification metadata should be stored.
+Only proof hashes and minimal verification metadata should be stored.
+
+---
+
+## Remaining Phase 2 Work
+
+Next tasks:
+
+1. Update contracts/proof-registry/README.md with testnet deployment result.
+2. Add frontend contract configuration.
+3. Connect Web MVP to deployed Soroban proof registry contract.
+4. Add on-chain proof status to the Create Proof page.
+5. Add on-chain verification display to the verification page.
+6. Add screenshots of the testnet proof flow.
+7. Update demo walkthrough.
+8. Prepare Phase 2 public demo release.
+
+---
+
+## Next Major Development Task
+
+Connect the Web MVP to the deployed Soroban proof registry contract.
+
+The Web MVP should eventually show:
+
+* Local proof hash
+* Stellar testnet contract ID
+* On-chain proof creation status
+* On-chain proof verification status
+* Link or reference to testnet transaction
+* Public verification result
 
 ---
 
@@ -188,12 +249,20 @@ Phase 2 is successful when:
 * Documentation explains the full flow.
 * Screenshots and demo notes are available.
 
+Current status:
+
+* Contract build completed
+* Local tests completed
+* Testnet deployment completed
+* Testnet invocation completed
+* Web MVP integration pending
+
 ---
 
 ## Final Phase 2 Outcome
 
-After Phase 2, ProofSetu Protocol should demonstrate:
+After full Phase 2 completion, ProofSetu Protocol should demonstrate:
 
-Create proof → generate hash → anchor on Stellar testnet → verify proof publicly.
+Create proof → generate hash → anchor on Stellar testnet → retrieve proof → verify proof publicly through the Web MVP.
 
-This will make the project stronger for grant applications, ecosystem feedback, and future funding discussions.
+The contract side of this flow is already working on Stellar testnet. The next step is frontend integration.
