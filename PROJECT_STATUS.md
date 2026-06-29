@@ -130,3 +130,9 @@ ProofSetu Protocol aims to become an open-source verifiable workflow proof layer
 The long-term goal is to connect verifiable workflow events with Stellar-based payments, stablecoins, remittance, escrow, and settlement flows.
 
 Private documents stay off-chain. Only hashes, timestamps, proof metadata, and verification references are used for transparent verification.
+
+## Latest Release
+
+v0.1.0 — Phase 1 Web MVP
+
+Release includes landing page, create proof page, local SHA-256 hash generation, generated proof record preview, public sample verification page, documentation, screenshots, and Vercel deployment.
