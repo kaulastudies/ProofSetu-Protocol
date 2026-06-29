@@ -1,356 +1,422 @@
-# Grant Readiness
+# ProofSetu Protocol — Grant Readiness
 
-ProofSetu Protocol is an open-source verifiable workflow proof layer for documents, milestones, invoices, grant deliverables, donation usage, cross-border service work, and AI-assisted decisions.
+ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
 
-The project has completed its Web MVP and now has a working Soroban proof registry contract deployed on Stellar testnet.
+The project is now grant-ready at the Stellar testnet MVP level because it demonstrates a working end-to-end proof flow:
 
----
-
-## Project Name
-
-ProofSetu Protocol
+Create proof → generate event hash → submit to Stellar testnet → receive transaction hash → verify proof dynamically using Proof ID and Event Hash.
 
 ---
 
-## Short Description
+## Current Grant Readiness Status
 
-ProofSetu Protocol helps teams create, store, and verify workflow proof records without exposing private documents on-chain.
+Status: Ready for v0.3.0 release preparation
 
-Private files stay off-chain. Only hashes, timestamps, proof metadata, and verification references are used.
-
----
-
-## Current Status
-
-Status: Phase 2 Stellar/Soroban testnet deployment completed.
-
-Completed:
-
-* Web MVP deployed
-* Create Proof page added
-* Local SHA-256 hash generation added
-* Public sample verification page added
-* Screenshots added
-* Documentation added
-* Soroban proof registry contract built
-* Local contract tests passed
-* Contract deployed to Stellar testnet
-* Testnet proof record created
-* Testnet proof record retrieved
-* Correct hash verification returned true
-* Wrong hash verification returned false
-
----
-
-## Live Demo
-
-Homepage:
-
-https://proof-setu-protocol.vercel.app/
-
-Create Proof:
-
-https://proof-setu-protocol.vercel.app/create
-
-Verify Sample:
-
-https://proof-setu-protocol.vercel.app/proof/sample
-
----
-
-## Stellar Testnet Contract
-
-Network:
-
-Stellar testnet
-
-Contract ID:
-
-CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ
-
-Deployment transaction:
-
-5ee448eb186c966fe6965fa7282b94d78a96df4e596dd9d0f6326cf3d0f6261b
-
-Create proof transaction:
-
-8a7fd049fcaf57e0c438a1b521b08cd30afe762cd6b74c172c302faccd98f132
-
-Wasm hash:
-
-743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166
-
-Deployer public address:
-
-GAT2L4GYPN2TST44AQA6QFVNWB4BUM7SXC73B4D5Y7PA4YRNHCLL
-
-Sample proof ID:
-
-PS-TESTNET-001
-
-Correct hash:
-
-sample_testnet_hash_001
-
----
-
-## Testnet Verification Result
-
-The deployed Soroban contract was invoked successfully on Stellar testnet.
-
-Function results:
-
-* create_proof returned true
-* get_proof returned the stored proof record
-* verify_proof with correct hash returned true
-* verify_proof with wrong hash returned false
-
-Stored proof record:
-
-{
-"creator": "proofsetu_testnet_deployer",
-"event_hash": "sample_testnet_hash_001",
-"proof_type": "freelancer_milestone",
-"reference_id": "PROOFSETU-TESTNET-001",
-"status": "created",
-"timestamp": "2026-06-29T00:00:00Z"
-}
-
-This confirms that ProofSetu Protocol can create, retrieve, and verify workflow proof records on Stellar testnet.
-
----
-
-## Why ProofSetu Fits Stellar/Soroban
-
-ProofSetu Protocol fits Stellar/Soroban because it connects real-world workflow events with verifiable, low-cost, public proof infrastructure.
-
-The project can support:
-
-* Grant deliverable proof
-* Freelancer milestone proof
-* Invoice approval proof
-* Donation usage proof
-* Cross-border service proof
-* AI-assisted decision trail proof
-* Future payment and settlement proof
-
-Stellar/Soroban can provide the on-chain registry layer for timestamped proof references while sensitive documents remain off-chain.
-
----
-
-## Problem Being Solved
-
-Many real-world workflows depend on proof scattered across:
-
-* Emails
-* PDFs
-* Screenshots
-* WhatsApp messages
-* Spreadsheets
-* Internal tools
-* Client/vendor communication
-
-This creates problems such as:
-
-* Disputes over whether work was completed
-* Delayed milestone approvals
-* Weak audit trails
-* Poor grant reporting
-* Poor donation transparency
-* Difficulty proving document submission
-* Privacy risk if sensitive files are exposed
-
-ProofSetu solves this by creating verifiable proof records that can be checked without exposing private documents.
-
----
-
-## ProofSetu Solution
-
-ProofSetu creates a proof record for a workflow event.
-
-The proof flow is:
-
-1. User creates workflow proof metadata.
-2. The system generates a proof hash.
-3. The proof hash and metadata can be anchored on Stellar/Soroban.
-4. Public verification can confirm whether the proof record exists and matches.
-5. Private files remain off-chain.
-
----
-
-## Current MVP Flow
-
-The current Web MVP supports:
-
-* Landing page
-* Create Proof page
-* Proof type selection
-* Event details form
-* Local SHA-256 hash generation
-* Generated proof record preview
-* JSON proof output
-* Public sample verification page
-
-The current Soroban contract supports:
-
-* create_proof
-* get_proof
-* verify_proof
-
----
-
-## Privacy Design
-
-ProofSetu does not store private documents on-chain.
-
-Do not store:
-
-* Patient records
-* Client files
-* Invoices
-* Contracts
-* Identity documents
-* Financial records
-* Personal data
-* API keys
-* Wallet private keys
-* Seed phrases
-
-Only store:
-
-* Proof hashes
-* Proof IDs
-* Proof types
-* Reference IDs
-* Creator references
-* Timestamps
-* Verification status
-
----
-
-## Use Cases
-
-ProofSetu Protocol can be used for:
-
-1. Freelancer milestone proof
-2. Grant deliverable proof
-3. NGO donation usage proof
-4. Invoice approval proof
-5. Hospital document submission proof
-6. AI decision summary proof
-7. Cross-border service delivery proof
-8. Future payment and settlement proof
-
----
-
-## Completed Milestones
-
-### Phase 1 — Web MVP
+ProofSetu has completed the core technical proof-of-concept required for a serious open-source Stellar/Soroban MVP.
 
 Completed:
 
 * Public GitHub repository
 * MIT License
 * Documentation
-* Live Vercel demo
-* Landing page
-* Create Proof page
-* Local hash generation
-* Public sample verification page
-* Screenshots
-* v0.1.0 release
+* Web MVP live on Vercel
+* Proof creation UI
+* Local SHA-256 event hash generation
+* Soroban proof registry contract
+* Local Soroban contract tests
+* Stellar testnet contract deployment
+* Backend-assisted Stellar testnet proof submission
+* Real Stellar transaction hash returned to frontend
+* Dynamic on-chain verification API
+* Public Verify On-chain page
+* Successful verification using Proof ID and Event Hash
+* Wrong hash verification returning false
+* Safe environment variable handling
+* Secret key not exposed
 
-### Phase 2 — Soroban Testnet
+---
+
+## Live Demo
+
+* Homepage: https://proof-setu-protocol.vercel.app/
+* Create Proof: https://proof-setu-protocol.vercel.app/create
+* Verify On-chain: https://proof-setu-protocol.vercel.app/verify
+* Verify Sample: https://proof-setu-protocol.vercel.app/proof/sample
+* Testnet Contract: https://proof-setu-protocol.vercel.app/testnet
+* Environment Check API: https://proof-setu-protocol.vercel.app/api/env-check
+* On-chain Proof API: https://proof-setu-protocol.vercel.app/api/create-onchain-proof
+* On-chain Verification API: https://proof-setu-protocol.vercel.app/api/verify-onchain-proof
+
+---
+
+## Repository
+
+GitHub Repository:
+
+https://github.com/kaulastudies/ProofSetu-Protocol
+
+Current recommended release:
+
+`v0.3.0`
+
+---
+
+## Problem Statement
+
+Important real-world work often depends on scattered proof across WhatsApp, email, PDFs, screenshots, spreadsheets, payment records, and internal tools.
+
+This creates:
+
+* Payment disputes
+* Delayed approvals
+* Weak audit trails
+* Low trust between parties
+* Poor accountability for AI-assisted workflows
+* Difficulty proving that a milestone, document, invoice, or deliverable existed at a specific time
+
+Examples:
+
+* A freelancer says work was completed.
+* A client says the milestone was not approved.
+* An NGO wants to prove donation usage.
+* A startup wants to prove grant deliverables.
+* A hospital wants to prove that a claim document was submitted.
+* An AI-assisted workflow needs a verifiable decision trail.
+
+---
+
+## Proposed Solution
+
+ProofSetu Protocol creates verifiable proof records for real-world workflow events.
+
+A proof record can include:
+
+* Proof ID
+* Proof type
+* Event title
+* Event description
+* SHA-256 event hash
+* Timestamp
+* Creator reference
+* Stellar network reference
+* Transaction hash
+* Verification result
+
+ProofSetu does not expose private documents on-chain.
+
+Instead, it anchors proof metadata and hashes so users can later verify that a specific workflow event existed and that its hash matches the stored record.
+
+---
+
+## Why Stellar/Soroban
+
+Stellar is suitable for ProofSetu because the protocol is designed around real-world trust, payments, milestones, invoices, grants, remittances, and settlement workflows.
+
+Soroban enables ProofSetu to store and verify workflow proof records through smart contracts.
+
+ProofSetu can later connect proof records with:
+
+* Milestone payments
+* Invoice settlement
+* Grant disbursement
+* NGO transparency
+* Cross-border service work
+* Stablecoin payment flows
+* Escrow-style release logic
+
+---
+
+## Completed Technical Scope
+
+### Web MVP
 
 Completed:
 
-* Soroban contract scaffold
-* Contract build validation
+* Landing page
+* Create Proof page
+* Proof type selection
+* Event details form
+* Local SHA-256 event hash generation
+* Generated proof record JSON output
+* Sample verification page
+* Testnet contract information page
+* Verify On-chain page
+
+### Soroban Contract
+
+Completed:
+
+* Proof registry contract scaffold
+* `create_proof`
+* `get_proof`
+* `verify_proof`
 * Local tests
 * Stellar testnet deployment
-* On-chain proof creation
-* On-chain proof retrieval
+* Initial contract invocation
 * Correct hash verification
-* Wrong hash rejection
+* Wrong hash verification
+
+### Backend/API
+
+Completed:
+
+* `/api/env-check`
+* `/api/create-onchain-proof`
+* `/api/verify-onchain-proof`
+* Server-side Stellar configuration helper
+* Backend-assisted Stellar transaction submission
+* Dynamic proof verification through Stellar testnet simulation
+* Safe API responses without exposing secret keys
+
+### Frontend Integration
+
+Completed:
+
+* Create Proof page connected to backend API
+* Real Stellar transaction hash displayed in frontend
+* Stellar SUCCESS status displayed in frontend
+* Verify On-chain page connected to verification API
+* Verified true/false result displayed publicly
 
 ---
 
-## Remaining Work
+## Stellar Testnet Details
 
-Next planned tasks:
+Network:
 
-* Update Web MVP with deployed contract configuration
-* Add wallet/testnet connection planning
-* Add on-chain status to Create Proof page
-* Add on-chain lookup to verification page
-* Add screenshots of testnet proof flow
-* Update demo walkthrough
-* Prepare Phase 2 public demo release
-* Collect ecosystem feedback
+`testnet`
 
----
+Contract ID:
 
-## Suggested Grant Direction
+`CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ`
 
-ProofSetu Protocol can request grant support for the next stage:
+Wasm hash:
 
-Goal:
+`743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166`
 
-Connect the Web MVP to the deployed Soroban proof registry contract and prepare a complete public demo of verifiable workflow proof on Stellar testnet.
+Deployer public address:
 
-Suggested funding use:
+`GAT2L4GYPN2TST44AQA6QFVNWB4BUM7SXC73B4D5Y7PA4YRNHCLL`
 
-* Frontend contract integration
-* Wallet/testnet connection flow
-* On-chain proof creation UI
-* On-chain verification UI
-* Documentation
-* Screenshots and demo walkthrough
-* Testing and polish
-* Community feedback and iteration
+Deployment transaction:
 
-Suggested grant ask:
+`5ee448eb186c966fe6965fa7282b94d78a96df4e596dd9d0f6326cf3d0f6261b`
 
-USD 25,000 to USD 35,000 equivalent in XLM, depending on milestone scope.
+Initial create proof transaction:
 
-Recommended starting ask:
+`8a7fd049fcaf57e0c438a1b521b08cd30afe762cd6b74c172c302faccd98f132`
 
-USD 30,000 equivalent in XLM.
+Successful verified proof sample:
+
+* Proof ID: `PS-1782748239799`
+* Event Hash: `775fbc34077813ca0cdd0941af51872c4eb0890bae5c58a8590f74f541347d9e`
+* Verification result: `true`
+* Secret key exposed: `false`
 
 ---
 
-## Grant Readiness Status
+## Current Working Demo Flow
 
-ProofSetu Protocol is now stronger than an idea-stage project.
+### Create Proof Flow
 
-Current strengths:
+1. User opens Create Proof page.
+2. User enters workflow event details.
+3. Browser generates a SHA-256 event hash.
+4. User submits proof to Stellar testnet.
+5. Backend API signs and submits the transaction.
+6. Soroban contract stores the proof record.
+7. API returns Stellar transaction hash.
+8. Frontend displays transaction hash and SUCCESS status.
 
-* Working Web MVP
-* Public repository
-* Live demo
-* Documentation
-* Screenshots
-* Soroban contract built
-* Local tests passed
-* Stellar testnet deployment completed
-* On-chain proof creation and verification tested
+### Verify Proof Flow
 
-Remaining before a stronger application:
-
-* Connect frontend to deployed contract
-* Add on-chain verification screenshots
-* Add demo video or walkthrough GIF
-* Update README and demo documents after frontend integration
-* Prepare concise grant pitch and milestone budget
+1. User opens Verify On-chain page.
+2. User enters Proof ID and Event Hash.
+3. Frontend sends values to verification API.
+4. Backend checks the deployed Soroban contract.
+5. API returns verified true/false.
+6. Frontend displays verification result.
 
 ---
 
-## Summary
+## Security Readiness
 
-ProofSetu Protocol has moved from Web MVP to working Stellar/Soroban testnet proof infrastructure.
+Implemented:
 
-The project now demonstrates:
+* Secret key stored only as Vercel environment variable
+* Secret key not committed to GitHub
+* Secret key not exposed in frontend code
+* Secret key not exposed in API responses
+* Secret key not shown in README
+* Secret key not shown in screenshots
+* API responses include `secretKeyExposed: false`
 
-Create proof → generate hash → store proof on Stellar testnet → retrieve proof → verify correct hash → reject wrong hash.
+Safe public values:
 
-This makes ProofSetu a credible early-stage open-source project for Stellar/Soroban ecosystem feedback and future grant application.
+* Contract ID
+* Public testnet address
+* Transaction hash
+* Wasm hash
+* Proof ID
+* Event hash
+* Verification result
+
+Private values that must never be exposed:
+
+* Secret key
+* Private key
+* Seed phrase
+* Mainnet wallet secret
+* API secrets
+* Client documents
+* Patient records
+* Identity documents
+* Financial documents
+
+---
+
+## Screenshots Available
+
+Current screenshots include:
+
+* Homepage
+* Create Proof page
+* Generated proof hash
+* Sample verification page
+* Stellar testnet contract page
+* Create Proof page with Stellar config
+* Create Proof on-chain placeholder
+* Verify Sample page with Stellar section
+* Create Proof API scaffold response
+* Create Proof Stellar testnet success
+* Verify On-chain proof success
+
+These screenshots support grant review, README clarity, and demo validation.
+
+---
+
+## Grant-Ready Strengths
+
+ProofSetu is now strong for grant review because it is not only a concept.
+
+It includes:
+
+* A live deployed web MVP
+* A deployed Soroban contract
+* A real Stellar testnet contract ID
+* Real testnet transactions
+* A working backend integration
+* A dynamic verification flow
+* Public screenshots
+* Clear documentation
+* Security notes
+* Open-source repository structure
+* Practical real-world use cases
+
+The project demonstrates a concrete Stellar/Soroban workflow proof use case.
+
+---
+
+## Suggested Grant Positioning
+
+ProofSetu Protocol can be positioned as:
+
+A verifiable workflow proof layer for real-world milestones, invoices, grants, NGO transparency, hospital document submissions, and AI-assisted decision trails, built on Stellar/Soroban.
+
+Short pitch:
+
+ProofSetu converts important workflow events into verifiable proof records. It generates a SHA-256 event hash, anchors proof metadata to a Soroban contract on Stellar testnet, returns a real transaction hash, and allows anyone to verify the proof using Proof ID and Event Hash without exposing private documents.
+
+---
+
+## Suggested Grant Ask
+
+Recommended early-stage grant ask:
+
+`$10,000 – $25,000`
+
+Reasoning:
+
+ProofSetu already has a live Stellar testnet MVP, contract deployment, frontend integration, and dynamic verification. Funding would support moving from MVP to a polished open-source protocol with better verification UX, wallet-based proof ownership, proof history, templates, documentation, and mainnet-readiness review.
+
+---
+
+## Proposed Grant Milestones
+
+### Milestone 1 — Public Testnet MVP Polish
+
+Deliverables:
+
+* Clean UI polish
+* Improved verification page
+* README and docs polish
+* Demo walkthrough
+* Architecture diagram
+* v0.3.0 release
+
+### Milestone 2 — Proof History and Templates
+
+Deliverables:
+
+* Proof history storage
+* Use-case templates
+* Freelancer milestone proof template
+* Grant deliverable proof template
+* Invoice approval proof template
+* NGO transparency proof template
+
+### Milestone 3 — Wallet and Organization Flow
+
+Deliverables:
+
+* Wallet-based user flow
+* Organization dashboard
+* Creator proof ownership
+* Public proof lookup
+* Better access and verification model
+
+### Milestone 4 — Mainnet Readiness Review
+
+Deliverables:
+
+* Security review
+* Mainnet deployment checklist
+* Better error handling
+* Documentation for developers
+* Production deployment plan
+
+---
+
+## v0.3.0 Release Goal
+
+The `v0.3.0` release should represent the first complete Stellar testnet MVP.
+
+Release summary:
+
+ProofSetu Protocol can create a workflow proof, generate a SHA-256 event hash, submit the proof to a deployed Soroban contract on Stellar testnet, return a real Stellar transaction hash, and verify the proof dynamically using Proof ID and Event Hash.
+
+---
+
+## Remaining Before v0.3.0
+
+Tasks:
+
+* Confirm README screenshots render correctly
+* Update Project Status
+* Update Grant Readiness
+* Update Demo Walkthrough
+* Confirm all Vercel pages are live
+* Confirm all API routes are safe
+* Create v0.3.0 GitHub release
+* Prepare demo video script
+* Prepare final grant submission summary
+
+---
+
+## Final Readiness Summary
+
+ProofSetu Protocol is ready for a `v0.3.0` release and grant-readiness packaging.
+
+The project now demonstrates a real Stellar/Soroban use case with working testnet deployment, backend-assisted proof submission, and dynamic on-chain verification.
+
+The next priority is documentation polish, release packaging, and demo presentation.
