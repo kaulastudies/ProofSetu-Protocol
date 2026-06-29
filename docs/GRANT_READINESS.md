@@ -47,6 +47,9 @@ Completed:
 * On-chain Proof API: https://proof-setu-protocol.vercel.app/api/create-onchain-proof
 * On-chain Verification API: https://proof-setu-protocol.vercel.app/api/verify-onchain-proof
 
+### Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
 ---
 
 ## Repository
