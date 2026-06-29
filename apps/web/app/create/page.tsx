@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { STELLAR_TESTNET_CONFIG } from "../../lib/stellar-testnet";
 
 type ProofRecord = {
   proof_id: string;
@@ -88,6 +89,29 @@ export default function CreateProofPage() {
             Stellar/Soroban testnet anchoring will be added in the next phase.
           </p>
         </div>
+
+    <div className="verify-card" style={{ marginBottom: "24px" }}>
+      <div className="verify-status">Stellar Testnet Ready</div>
+
+      <h2>On-chain proof registry configured</h2>
+
+      <p className="verify-description">
+        This Web MVP is connected to the deployed ProofSetu Soroban proof
+        registry contract configuration. The next step is to enable direct
+        on-chain proof creation from this page.
+      </p>
+
+      <div className="hash-box">
+        <strong>Contract ID</strong>
+        <code>{STELLAR_TESTNET_CONFIG.contractId}</code>
+      </div>
+
+      <div className="hash-box">
+        <strong>Network</strong>
+        <code>{STELLAR_TESTNET_CONFIG.network}</code>
+      </div>
+    </div>
+
 
         <div className="form-grid">
           <form className="proof-form" onSubmit={handleSubmit}>
