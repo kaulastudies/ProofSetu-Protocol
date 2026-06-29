@@ -68,7 +68,10 @@ impl ProofRegistryContract {
         record.event_hash == event_hash
     }
 
-    fn proof_key(env: &Env, proof_id: String) -> (Symbol, String) {
+    fn proof_key(_env: &Env, proof_id: String) -> (Symbol, String) {
         (symbol_short!("PROOF"), proof_id)
     }
 }
+
+#[cfg(test)]
+mod test;
