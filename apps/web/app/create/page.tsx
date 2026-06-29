@@ -68,12 +68,11 @@ export default function CreateProofPage() {
         </a>
 
         <div className="nav-links">
-  <a href="#problem">Problem</a>
-  <a href="#solution">Solution</a>
-  <a href="/create">Create Proof</a>
-  <a href="#use-cases">Use Cases</a>
-  <a href="#roadmap">Roadmap</a>
-</div>
+          <a href="/">Home</a>
+          <a href="/create">Create Proof</a>
+          <a href="/#use-cases">Use Cases</a>
+          <a href="/#roadmap">Roadmap</a>
+        </div>
       </nav>
 
       <section className="form-section">
@@ -137,7 +136,7 @@ export default function CreateProofPage() {
               <input
                 value={referenceId}
                 onChange={(event) => setReferenceId(event.target.value)}
-                placeholder="Example: CLIENT-ACME-M1"
+                placeholder="Example: PROOFSETU-MVP-001"
                 required
               />
             </label>
