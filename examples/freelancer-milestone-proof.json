@@ -1,0 +1,12 @@
+{
+"proof_id": "PS-FREE-0001",
+"proof_type": "freelancer_milestone",
+"title": "Landing Page MVP Completed",
+"description": "Freelancer completed the first version of a landing page and submitted it for client review.",
+"reference_id": "CLIENT-ACME-M1",
+"event_hash": "sample_hash_to_be_generated_in_app",
+"creator_wallet": "stellar_testnet_wallet_address",
+"network": "stellar_testnet",
+"status": "sample",
+"created_at": "2026-06-29T00:00:00Z"
+}
