@@ -1,36 +1,152 @@
 # Proof Registry Contract
 
-This folder contains the planned Soroban proof registry contract for ProofSetu Protocol.
+This folder contains the Soroban proof registry contract for ProofSetu Protocol.
 
-The contract is designed to store and verify workflow proof records on Stellar/Soroban testnet.
+The contract stores and verifies workflow proof records on Stellar/Soroban.
+
+Private documents are never stored on-chain. Only proof hashes and minimal verification metadata are stored.
+
+---
 
 ## Current Status
 
-Initial contract scaffold added.
+Status: Contract scaffold built and tested locally.
 
-## Planned Contract Functions
+Completed:
 
-- `create_proof`
-- `get_proof`
-- `verify_proof`
+* Contract scaffold added
+* Proof record structure added
+* create_proof function added
+* get_proof function added
+* verify_proof function added
+* Release overflow checks enabled
+* Contract build validated with Stellar CLI
+* Local contract tests added
+* Local tests passed
 
-## Proof Record Fields
+---
 
-A proof record includes:
+## Build Result
 
-- Proof type
-- Event hash
-- Creator wallet/reference
-- Reference ID
-- Timestamp
-- Status
+Validated in GitHub Codespaces.
 
-## Privacy Note
+* Stellar CLI version: 27.0.0
+* Wasm file: target/wasm32v1-none/release/proof_registry.wasm
+* Wasm hash: 743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166
+* Wasm size: 3928 bytes optimized
+* Exported functions:
 
-Private documents are not stored on-chain.
+  * create_proof
+  * get_proof
+  * verify_proof
 
-Only hashes, timestamps, and proof metadata are stored for verification.
+---
 
-## Phase 2 Goal
+## Test Result
 
-The next goal is to build, test, and deploy this contract to Stellar testnet using the Stellar CLI.
+Local tests passed.
+
+Result:
+
+* 3 passed
+* 0 failed
+* 0 ignored
+
+Test coverage currently includes:
+
+* Create proof record
+* Retrieve proof record
+* Verify matching proof hash
+* Reject mismatched proof hash
+* Reject duplicate proof ID
+
+---
+
+## Contract Functions
+
+### create_proof
+
+Creates a new proof record.
+
+Inputs:
+
+* Proof ID
+* Proof type
+* Event hash
+* Creator
+* Reference ID
+* Timestamp
+
+Behavior:
+
+* Stores proof metadata
+* Prevents duplicate proof IDs
+* Sets proof status as created
+
+### get_proof
+
+Retrieves a proof record by proof ID.
+
+### verify_proof
+
+Verifies whether a submitted event hash matches the stored proof hash.
+
+Returns true if the hash matches and false if the hash does not match.
+
+---
+
+## Privacy Rule
+
+Do not store private documents on-chain.
+
+Only store:
+
+* Proof hashes
+* Proof IDs
+* Proof types
+* Reference IDs
+* Creator references
+* Timestamps
+* Verification status
+
+Never store:
+
+* Patient records
+* Client files
+* Invoices
+* Contracts
+* Identity documents
+* Financial records
+* Personal data
+* API keys
+* Wallet private keys
+* Seed phrases
+
+---
+
+## Local Build Command
+
+From this folder, run:
+
+stellar contract build
+
+---
+
+## Local Test Command
+
+From this folder, run:
+
+cargo test
+
+---
+
+## Next Phase 2 Tasks
+
+Next planned tasks:
+
+1. Prepare Stellar testnet deployment notes.
+2. Create testnet identity.
+3. Deploy proof registry contract to Stellar testnet.
+4. Publish contract ID.
+5. Add sample testnet transaction.
+6. Connect Web MVP to contract data.
