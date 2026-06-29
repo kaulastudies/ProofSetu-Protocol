@@ -163,6 +163,10 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 
 ![Sample Verification Page](screenshots/verify-sample-proof.png)
 
+### Stellar Testnet Contract Page
+
+![Stellar Testnet Contract Page](screenshots/testnet-contract.png)
+
 ## License
 
 MIT
