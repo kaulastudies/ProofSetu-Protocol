@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
 getSafeStellarServerStatus,
-getStellarServerConfig,
+submitCreateProofToStellarTestnet,
 } from "../../../lib/stellar-server";
+
+export const runtime = "nodejs";
+export const maxDuration = 30;
 
 type CreateOnchainProofPayload = {
 proof_id?: string;
@@ -17,16 +20,15 @@ export async function GET() {
 return NextResponse.json({
 status: "ready",
 route: "/api/create-onchain-proof",
-mode: "scaffold_with_env_check",
+mode: "stellar_testnet_ready",
 message:
-"API route scaffold is ready. Server-side Stellar environment configuration is available without exposing the secret key.",
+"API route is ready for backend-assisted Stellar testnet invocation. Secret key is configured server-side and is not exposed.",
 stellar: getSafeStellarServerStatus(),
 });
 }
 
 export async function POST(request: NextRequest) {
 try {
-const stellarConfig = getStellarServerConfig();
 const payload = (await request.json()) as CreateOnchainProofPayload;
 
 
@@ -45,50 +47,49 @@ if (missingFields.length > 0) {
   return NextResponse.json(
     {
       success: false,
-      mode: "scaffold_with_env_check",
+      mode: "stellar_testnet_invocation",
       message: "Missing required proof fields.",
       missingFields,
+      secretKeyExposed: false,
       stellar: getSafeStellarServerStatus(),
     },
     { status: 400 }
   );
 }
 
+const result = await submitCreateProofToStellarTestnet({
+  proof_id: payload.proof_id as string,
+  proof_type: payload.proof_type as string,
+  event_hash: payload.event_hash as string,
+  creator: payload.creator as string,
+  reference_id: payload.reference_id as string,
+  timestamp: payload.timestamp as string,
+});
+
 return NextResponse.json({
-  success: true,
-  mode: "scaffold_with_env_check",
+  ...result,
   message:
-    "Proof payload received successfully. Server-side Stellar config is available. Real testnet invocation will be added in the next milestone.",
-  contractId: stellarConfig.contractId,
-  network: stellarConfig.network,
-  apiCallerPublicKey: stellarConfig.apiCallerPublicKey,
+    "Proof was successfully submitted to the deployed Stellar testnet contract.",
   secretKeyExposed: false,
-  proof: {
-    proof_id: payload.proof_id,
-    proof_type: payload.proof_type,
-    event_hash: payload.event_hash,
-    creator: payload.creator,
-    reference_id: payload.reference_id,
-    timestamp: payload.timestamp,
-  },
-  nextStep:
-    "Use the server-side Stellar SDK flow to submit create_proof to the deployed Soroban testnet contract.",
 });
 
 
 } catch (error) {
 const message =
-error instanceof Error ? error.message : "Invalid request or server config.";
+error instanceof Error
+? error.message
+: "Stellar testnet invocation failed.";
 
 
 return NextResponse.json(
   {
     success: false,
-    mode: "scaffold_with_env_check",
+    mode: "stellar_testnet_invocation",
     message,
     secretKeyExposed: false,
+    stellar: getSafeStellarServerStatus(),
   },
-  { status: 400 }
+  { status: 500 }
 );
 
 
