@@ -11,7 +11,6 @@ ProofSetu Protocol </a>
       <a href="#roadmap">Roadmap</a>
     </div>
   </nav>
-
   <section className="hero">
     <div>
       <div className="badge">Built for Stellar/Soroban workflow proof</div>
