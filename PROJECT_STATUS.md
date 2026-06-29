@@ -8,6 +8,34 @@ The project started as a Web MVP and has now moved into Stellar/Soroban testnet 
 
 ## Current Stage
 
+## Latest Release
+
+**v0.2.0 — Stellar Testnet Deployment**
+
+ProofSetu Protocol v0.2.0 marks the first Stellar/Soroban testnet deployment release.
+
+This release includes:
+
+* Soroban proof registry contract
+* Contract build validation
+* Local contract tests
+* Stellar testnet deployment
+* Testnet proof creation
+* Testnet proof retrieval
+* Correct hash verification
+* Wrong hash rejection
+* Public Testnet Contract page
+* Updated documentation and screenshots
+
+Live Testnet Contract page:
+
+https://proof-setu-protocol.vercel.app/testnet
+
+Contract ID:
+
+CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ
+
+
 **Phase 2 — Stellar/Soroban Testnet**
 
 Status: Soroban proof registry contract deployed and tested on Stellar testnet.
