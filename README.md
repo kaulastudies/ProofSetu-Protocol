@@ -74,6 +74,7 @@ The first version will include:
 * [Architecture](docs/ARCHITECTURE.md)
 * [Use Cases](docs/USE_CASES.md)
 * [Roadmap](docs/ROADMAP.md)
+* [Deployment Guide](docs/DEPLOYMENT.md)
 * [Project Status](PROJECT_STATUS.md)
 
 ## Example Proof Records
