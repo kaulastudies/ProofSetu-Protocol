@@ -6,6 +6,7 @@ ProofSetu Protocol is an open-source verifiable workflow proof layer built on St
 * Homepage: https://proof-setu-protocol.vercel.app/
 * Create Proof: https://proof-setu-protocol.vercel.app/create
 * Verify Sample: https://proof-setu-protocol.vercel.app/proof/sample
+* 🎥 Demo Video: [ProofSetu Protocol v0.3.0 — Stellar Testnet Proof Verification Demo](https://youtu.be/7EKzgLwDhE0)
 
 ## Current MVP Flow
 
