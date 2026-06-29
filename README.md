@@ -67,9 +67,26 @@ The first version will include:
 5. Hospital document submission proof
 6. AI-assisted decision proof
 
-## Roadmap
+## Documentation
 
-See `/docs/ROADMAP.md`.
+* [Grant Proposal](docs/GRANT_PROPOSAL.md)
+* [Milestones](docs/MILESTONES.md)
+* [Architecture](docs/ARCHITECTURE.md)
+* [Use Cases](docs/USE_CASES.md)
+* [Roadmap](docs/ROADMAP.md)
+* [Project Status](PROJECT_STATUS.md)
+
+## Example Proof Records
+
+* [Freelancer Milestone Proof](examples/freelancer-milestone-proof.json)
+* [NGO Donation Usage Proof](examples/ngo-donation-proof.json)
+* [Hospital Document Submission Proof](examples/hospital-document-proof.json)
+
+## Current Status
+
+ProofSetu Protocol is currently in the repository setup and documentation stage.
+
+Next planned step: build the first web MVP with proof creation, hash generation, and public verification pages.
 
 ## License
 
