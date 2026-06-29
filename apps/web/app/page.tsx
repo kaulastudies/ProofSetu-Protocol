@@ -8,6 +8,7 @@ ProofSetu Protocol </a>
       <a href="#solution">Solution</a>
       <a href="/create">Create Proof</a>
       <a href="/proof/sample">Verify Sample</a>
+        <a href="/testnet">Testnet Contract</a>
       <a href="#use-cases">Use Cases</a>
       <a href="#roadmap">Roadmap</a>
     </div>
