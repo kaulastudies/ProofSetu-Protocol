@@ -17,6 +17,10 @@ secretKeyExposed?: boolean;
 missingFields?: string[];
 };
 
+const VERIFIED_SAMPLE_PROOF_ID = "PS-1782748239799";
+const VERIFIED_SAMPLE_EVENT_HASH =
+"775fbc34077813ca0cdd0941af51872c4eb0890bae5c58a8590f74f541347d9e";
+
 export default function VerifyOnchainProofPage() {
 const [proofId, setProofId] = useState("");
 const [eventHash, setEventHash] = useState("");
@@ -60,15 +64,13 @@ try {
 }
 
 function loadSuccessfulSample() {
-setProofId("PS-1782739180173");
-setEventHash(
-"5a1ccfeed9615c3d049f21111635d1e036d4d32b38eba72e29ac31338b1bcb9c"
-);
+setProofId(VERIFIED_SAMPLE_PROOF_ID);
+setEventHash(VERIFIED_SAMPLE_EVENT_HASH);
 setResult(null);
 }
 
 function loadWrongHashSample() {
-setProofId("PS-1782739180173");
+setProofId(VERIFIED_SAMPLE_PROOF_ID);
 setEventHash("wrong_hash_for_negative_verification_test");
 setResult(null);
 }
@@ -138,6 +140,11 @@ ProofSetu Protocol </a>
         <strong>Contract ID</strong>
         <code>{STELLAR_TESTNET_CONFIG.contractId}</code>
       </div>
+
+      <div className="hash-box">
+        <strong>Verified Sample Proof ID</strong>
+        <code>{VERIFIED_SAMPLE_PROOF_ID}</code>
+      </div>
     </div>
 
     <div className="form-grid">
@@ -147,7 +154,7 @@ ProofSetu Protocol </a>
           <input
             value={proofId}
             onChange={(event) => setProofId(event.target.value)}
-            placeholder="Example: PS-1782739180173"
+            placeholder="Example: PS-1782748239799"
             required
           />
         </label>
