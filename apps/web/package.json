@@ -1,25 +1,22 @@
 {
-"name": "proofsetu-web",
-"version": "0.1.0",
-"private": true,
-"description": "Web MVP for ProofSetu Protocol",
-"scripts": {
-"dev": "next dev",
-"build": "next build",
-"start": "next start",
-"lint": "next lint"
-},
-"dependencies": {
-"next": "14.2.5",
-"react": "18.3.1",
-"react-dom": "18.3.1"
-},
-"devDependencies": {
-"@types/node": "20.14.10",
-"@types/react": "18.3.3",
-"@types/react-dom": "18.3.0",
-"typescript": "5.5.3",
-"eslint": "8.57.0",
-"eslint-config-next": "14.2.5"
-}
+  "name": "proofsetu-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Web MVP for ProofSetu Protocol",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "16.2.9",
+    "react": "19.2.1",
+    "react-dom": "19.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.10",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "typescript": "5.7.2"
+  }
 }
