@@ -144,7 +144,7 @@ This confirms that ProofSetu Protocol can create, retrieve, and verify workflow 
 
 ProofSetu Protocol is currently in the repository setup and documentation stage.
 
-Next planned step: build the first web MVP with proof creation, hash generation, and public verification pages.
+Next planned step: prepare the v0.3.0 release with updated documentation, screenshots, and grant-readiness notes.
 ## Screenshots
 
 ### Homepage
