@@ -89,6 +89,7 @@ The first version will include:
 * [Roadmap](docs/ROADMAP.md)
 * [Deployment Guide](docs/DEPLOYMENT.md)
 * [Project Status](PROJECT_STATUS.md)
+* [Demo Walkthrough](docs/DEMO_WALKTHROUGH.md)
 
 ## Example Proof Records
 
