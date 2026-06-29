@@ -1,11 +1,23 @@
 export default function HomePage() {
-return ( <main className="page"> <nav className="navbar"> <div className="logo">ProofSetu Protocol</div> <div className="nav-links"> <a href="#problem">Problem</a> <a href="#solution">Solution</a> <a href="#use-cases">Use Cases</a> <a href="#roadmap">Roadmap</a> </div> </nav>
+return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
+ProofSetu Protocol </a>
 
+```
+    <div className="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#solution">Solution</a>
+      <a href="/create">Create Proof</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#roadmap">Roadmap</a>
+    </div>
+  </nav>
 
   <section className="hero">
     <div>
       <div className="badge">Built for Stellar/Soroban workflow proof</div>
+
       <h1>Verifiable proof for real-world work.</h1>
+
       <p>
         ProofSetu Protocol is an open-source workflow proof layer for
         documents, milestones, invoices, grant deliverables, and AI-assisted
@@ -14,9 +26,10 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
       </p>
 
       <div className="hero-actions">
-        <a className="button button-primary" href="#solution">
-          Explore the MVP
+        <a className="button button-primary" href="/create">
+          Create Proof
         </a>
+
         <a className="button button-secondary" href="#use-cases">
           View use cases
         </a>
@@ -51,6 +64,7 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
 
   <section className="section" id="problem">
     <h2>The problem</h2>
+
     <p className="section-intro">
       Important workflow proof is often scattered across WhatsApp, email,
       PDFs, screenshots, spreadsheets, and internal tools. This creates
@@ -86,9 +100,10 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
 
   <section className="section" id="solution">
     <h2>The solution</h2>
+
     <p className="section-intro">
       ProofSetu creates tamper-evident proof records for real-world workflow
-      events. The first MVP will generate proof records and hashes locally.
+      events. The first MVP generates proof records and hashes locally.
       Later, proof hashes will be anchored on Stellar/Soroban testnet.
     </p>
 
@@ -96,7 +111,10 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
       <div className="step">
         <div className="step-number">01</div>
         <h3>Create event</h3>
-        <p>Enter workflow details such as proof type, title, and reference ID.</p>
+        <p>
+          Enter workflow details such as proof type, title, and reference
+          ID.
+        </p>
       </div>
 
       <div className="step">
@@ -121,6 +139,7 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
 
   <section className="section" id="use-cases">
     <h2>Use cases</h2>
+
     <p className="section-intro">
       ProofSetu is designed for workflows where trust, timestamping, and
       privacy-conscious verification matter.
@@ -179,6 +198,7 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
 
   <section className="section" id="roadmap">
     <h2>MVP roadmap</h2>
+
     <p className="section-intro">
       The project starts with a simple web MVP and then moves toward
       Stellar/Soroban testnet integration.
@@ -216,7 +236,7 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
     Stellar/Soroban integration.
   </footer>
 </main>
-
+```
 
 );
 }
