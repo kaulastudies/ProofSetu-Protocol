@@ -3,11 +3,21 @@
 ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
 ## Live Demo
 
-https://proof-setu-protocol.vercel.app/
+* Homepage: https://proof-setu-protocol.vercel.app/
+* Create Proof: https://proof-setu-protocol.vercel.app/create
+* Verify Sample: https://proof-setu-protocol.vercel.app/proof/sample
 
-It helps freelancers, NGOs, startups, service businesses, hospitals, and grant teams create tamper-evident proof records for documents, milestones, invoices, deliverables, and AI-assisted workflow decisions.
+## Current MVP Flow
 
-Private documents are not stored on-chain. ProofSetu stores only hashes, timestamps, proof metadata, and verification references.
+1. Visit the homepage.
+2. Open the Create Proof page.
+3. Enter proof details for a workflow event.
+4. Generate a local SHA-256 proof hash.
+5. View the generated proof record and JSON output.
+6. Open the public sample verification page.
+
+The current MVP uses local proof generation only. Stellar/Soroban testnet anchoring will be added in Phase 2.
+
 
 ## Problem
 
