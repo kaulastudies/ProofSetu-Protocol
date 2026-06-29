@@ -90,6 +90,7 @@ The first version will include:
 * [Deployment Guide](docs/DEPLOYMENT.md)
 * [Project Status](PROJECT_STATUS.md)
 * [Demo Walkthrough](docs/DEMO_WALKTHROUGH.md)
+* [Grant Readiness](docs/GRANT_READINESS.md)
 
 ## Example Proof Records
 
