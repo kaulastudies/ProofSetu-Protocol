@@ -67,12 +67,13 @@ export default function CreateProofPage() {
           ProofSetu Protocol
         </a>
 
-        <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/create">Create Proof</a>
-          <a href="/#use-cases">Use Cases</a>
-          <a href="/#roadmap">Roadmap</a>
-        </div>
+      <div className="nav-links">
+  <a href="/">Home</a>
+  <a href="/create">Create Proof</a>
+  <a href="/proof/sample">Verify Sample</a>
+  <a href="/#use-cases">Use Cases</a>
+  <a href="/#roadmap">Roadmap</a>
+</div>
       </nav>
 
       <section className="form-section">
