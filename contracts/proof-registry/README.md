@@ -1,29 +1,36 @@
 # Proof Registry Contract
 
-This folder will contain the future Soroban smart contract for ProofSetu Protocol.
+This folder contains the planned Soroban proof registry contract for ProofSetu Protocol.
 
-The contract will be responsible for storing and verifying proof records on Stellar/Soroban testnet.
+The contract is designed to store and verify workflow proof records on Stellar/Soroban testnet.
+
+## Current Status
+
+Initial contract scaffold added.
 
 ## Planned Contract Functions
 
-* `create_proof`
-* `get_proof`
-* `verify_proof`
+- `create_proof`
+- `get_proof`
+- `verify_proof`
 
-## Planned Proof Data
+## Proof Record Fields
 
-A proof record may include:
+A proof record includes:
 
-* Proof ID
-* Proof type
-* Event hash
-* Creator wallet
-* Timestamp
-* Network reference
-* Verification status
+- Proof type
+- Event hash
+- Creator wallet/reference
+- Reference ID
+- Timestamp
+- Status
 
 ## Privacy Note
 
-Private documents will not be stored on-chain.
+Private documents are not stored on-chain.
 
-Only hashes, timestamps, and proof metadata will be stored for verification.
+Only hashes, timestamps, and proof metadata are stored for verification.
+
+## Phase 2 Goal
+
+The next goal is to build, test, and deploy this contract to Stellar testnet using the Stellar CLI.
