@@ -166,6 +166,13 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 ### Stellar Testnet Contract Page
 
 ![Stellar Testnet Contract Page](screenshots/testnet-contract.png)
+### Create Proof Page with Stellar Config
+
+![Create Proof Page with Stellar Config](screenshots/create-proof-stellar-config.png)
+
+### Verify Sample Page with Stellar Section
+
+![Verify Sample Page with Stellar Section](screenshots/verify-sample-stellar-section.png)
 
 ## License
 
