@@ -166,6 +166,7 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 ### Stellar Testnet Contract Page
 
 ![Stellar Testnet Contract Page](screenshots/testnet-contract.png)
+
 ### Create Proof Page with Stellar Config
 
 ![Create Proof Page with Stellar Config](screenshots/create-proof-stellar-config.png)
@@ -181,6 +182,10 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 ### Create Proof API Scaffold Response
 
 ![Create Proof API Scaffold Response](screenshots/create-proof-api-scaffold-response.png)
+
+### Create Proof Stellar Testnet Success
+
+![Create Proof Stellar Testnet Success](screenshots/create-proof-stellar-testnet-success.png)
 
 ## License
 
