@@ -16,7 +16,31 @@ status: string;
 created_at: string;
 };
 
-type OnchainStatus = "pending" | "ready" | "placeholder";
+type OnchainStatus =
+| "pending"
+| "ready"
+| "submitting"
+| "scaffold_success"
+| "scaffold_error";
+
+type ApiResponse = {
+success?: boolean;
+status?: string;
+mode?: string;
+message?: string;
+contractId?: string;
+network?: string;
+proof?: {
+proof_id?: string;
+proof_type?: string;
+event_hash?: string;
+creator?: string;
+reference_id?: string;
+timestamp?: string;
+};
+nextStep?: string;
+missingFields?: string[];
+};
 
 export default function CreateProofPage() {
 const [proofType, setProofType] = useState("freelancer_milestone");
@@ -26,6 +50,7 @@ const [referenceId, setReferenceId] = useState("");
 const [creatorWallet, setCreatorWallet] = useState("");
 const [record, setRecord] = useState<ProofRecord | null>(null);
 const [onchainStatus, setOnchainStatus] = useState<OnchainStatus>("pending");
+const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null);
 
 async function generateHash(input: string) {
 const encoder = new TextEncoder();
@@ -67,13 +92,80 @@ setRecord({
   status: "local_proof_generated",
 });
 
+setApiResponse(null);
 setOnchainStatus("ready");
 
 
 }
 
-function handleOnchainPlaceholder() {
-setOnchainStatus("placeholder");
+async function handleOnchainPlaceholder() {
+if (!record) {
+return;
+}
+
+
+setOnchainStatus("submitting");
+setApiResponse(null);
+
+try {
+  const response = await fetch("/api/create-onchain-proof", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      proof_id: record.proof_id,
+      proof_type: record.proof_type,
+      event_hash: record.event_hash,
+      creator: record.creator_wallet,
+      reference_id: record.reference_id,
+      timestamp: record.created_at,
+    }),
+  });
+
+  const data = (await response.json()) as ApiResponse;
+
+  setApiResponse(data);
+
+  if (response.ok && data.success) {
+    setOnchainStatus("scaffold_success");
+  } else {
+    setOnchainStatus("scaffold_error");
+  }
+} catch {
+  setApiResponse({
+    success: false,
+    mode: "scaffold_only",
+    message: "Unable to reach API scaffold.",
+  });
+
+  setOnchainStatus("scaffold_error");
+}
+
+
+}
+
+function getOnchainStatusText() {
+if (onchainStatus === "pending") {
+return "Pending";
+}
+
+
+if (onchainStatus === "ready") {
+  return "Ready for Stellar testnet";
+}
+
+if (onchainStatus === "submitting") {
+  return "Sending proof payload to API scaffold";
+}
+
+if (onchainStatus === "scaffold_success") {
+  return "API scaffold received proof payload";
+}
+
+return "API scaffold returned an error";
+
+
 }
 
 return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
@@ -98,8 +190,9 @@ ProofSetu Protocol </a>
 
       <p>
         Generate a local proof record and SHA-256 hash for a real-world
-        workflow event. The page now also shows the Stellar testnet proof
-        registry status for future on-chain anchoring.
+        workflow event. The page now also sends the generated proof payload
+        to a safe API scaffold before live Stellar testnet invocation is
+        added.
       </p>
     </div>
 
@@ -110,8 +203,8 @@ ProofSetu Protocol </a>
 
       <p className="verify-description">
         ProofSetu has a deployed Soroban proof registry contract on Stellar
-        testnet. This page currently generates the proof hash locally and
-        prepares the proof record for future on-chain submission.
+        testnet. This page generates the proof hash locally and can now send
+        the proof payload to a backend/API scaffold.
       </p>
 
       <div className="verify-grid">
@@ -127,17 +220,12 @@ ProofSetu Protocol </a>
 
         <div>
           <span>On-chain Submission</span>
-          <strong>
-            {onchainStatus === "pending" && "Pending"}
-            {onchainStatus === "ready" && "Ready for Stellar testnet"}
-            {onchainStatus === "placeholder" &&
-              "Backend/API integration coming next"}
-          </strong>
+          <strong>{getOnchainStatusText()}</strong>
         </div>
 
         <div>
           <span>Current Mode</span>
-          <strong>Local proof + testnet contract display</strong>
+          <strong>Local proof + API scaffold</strong>
         </div>
       </div>
 
@@ -252,22 +340,35 @@ ProofSetu Protocol </a>
             </div>
 
             <div className="hash-box">
-              <strong>On-chain Submission Placeholder</strong>
+              <strong>API Scaffold Submission</strong>
               <p>
-                This proof hash is ready to be anchored to the deployed
-                Stellar testnet proof registry contract in the next backend
-                integration milestone.
+                This sends the generated proof payload to the live API
+                scaffold. Real Stellar testnet transaction submission will
+                be added in the next backend integration milestone.
               </p>
 
               <button
                 className="button button-secondary"
                 type="button"
                 onClick={handleOnchainPlaceholder}
+                disabled={onchainStatus === "submitting"}
                 style={{ marginTop: "14px" }}
               >
-                Prepare for Stellar Testnet Anchoring
+                {onchainStatus === "submitting"
+                  ? "Sending to API Scaffold..."
+                  : "Send Proof Payload to API Scaffold"}
               </button>
             </div>
+
+            {apiResponse && (
+              <div className="hash-box">
+                <strong>API Scaffold Response</strong>
+                <p>{apiResponse.message}</p>
+                <pre className="json-preview">
+                  {JSON.stringify(apiResponse, null, 2)}
+                </pre>
+              </div>
+            )}
 
             <pre className="json-preview">
               {JSON.stringify(record, null, 2)}
