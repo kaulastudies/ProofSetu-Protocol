@@ -1,7 +1,7 @@
 export default function HomePage() {
 return ( <main className="page"> <nav className="navbar"> <div className="logo">ProofSetu Protocol</div> <div className="nav-links"> <a href="#problem">Problem</a> <a href="#solution">Solution</a> <a href="#use-cases">Use Cases</a> <a href="#roadmap">Roadmap</a> </div> </nav>
 
-```
+
   <section className="hero">
     <div>
       <div className="badge">Built for Stellar/Soroban workflow proof</div>
@@ -216,7 +216,7 @@ return ( <main className="page"> <nav className="navbar"> <div className="logo">
     Stellar/Soroban integration.
   </footer>
 </main>
-```
+
 
 );
 }
