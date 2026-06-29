@@ -4,7 +4,7 @@ export default function TestnetPage() {
 return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
 ProofSetu Protocol </a>
 
-```
+
     <div className="nav-links">
       <a href="/">Home</a>
       <a href="/create">Create Proof</a>
@@ -89,7 +89,7 @@ ProofSetu Protocol </a>
     </div>
   </section>
 </main>
-```
+
 
 );
 }
