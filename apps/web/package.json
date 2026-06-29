@@ -5,7 +5,7 @@
   "description": "Web MVP for ProofSetu Protocol",
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack"
+    "build": "next build --webpack",
     "start": "next start"
   },
   "dependencies": {
