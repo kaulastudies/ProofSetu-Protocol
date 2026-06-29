@@ -103,6 +103,23 @@ The first version will include:
 ProofSetu Protocol is currently in the repository setup and documentation stage.
 
 Next planned step: build the first web MVP with proof creation, hash generation, and public verification pages.
+## Screenshots
+
+### Homepage
+
+![Homepage](screenshots/homepage.png)
+
+### Create Proof Page
+
+![Create Proof Page](screenshots/create-proof-form.png)
+
+### Generated Proof Hash
+
+![Generated Proof Hash](screenshots/generated-proof-hash.png)
+
+### Sample Verification Page
+
+![Sample Verification Page](screenshots/verify-sample-proof.png)
 
 ## License
 
