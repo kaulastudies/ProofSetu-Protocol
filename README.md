@@ -92,6 +92,7 @@ The first version will include:
 * [Demo Walkthrough](docs/DEMO_WALKTHROUGH.md)
 * [Grant Readiness](docs/GRANT_READINESS.md)
 * [Phase 2 Stellar Plan](docs/PHASE_2_STELLAR_PLAN.md)
+* [Soroban Contract Design](docs/SOROBAN_CONTRACT_DESIGN.md)
 
 ## Example Proof Records
 
