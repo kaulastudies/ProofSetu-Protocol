@@ -2,7 +2,7 @@ export default function HomePage() {
 return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
 ProofSetu Protocol </a>
 
-```
+
     <div className="nav-links">
       <a href="#problem">Problem</a>
       <a href="#solution">Solution</a>
@@ -235,7 +235,7 @@ ProofSetu Protocol </a>
     Stellar/Soroban integration.
   </footer>
 </main>
-```
+
 
 );
 }
