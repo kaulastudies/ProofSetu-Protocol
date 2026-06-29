@@ -68,11 +68,12 @@ export default function CreateProofPage() {
         </a>
 
         <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/create">Create Proof</a>
-          <a href="/#use-cases">Use Cases</a>
-          <a href="/#roadmap">Roadmap</a>
-        </div>
+  <a href="#problem">Problem</a>
+  <a href="#solution">Solution</a>
+  <a href="/create">Create Proof</a>
+  <a href="#use-cases">Use Cases</a>
+  <a href="#roadmap">Roadmap</a>
+</div>
       </nav>
 
       <section className="form-section">
