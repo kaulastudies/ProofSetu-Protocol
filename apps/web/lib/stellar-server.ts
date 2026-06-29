@@ -5,6 +5,7 @@ Keypair,
 Networks,
 TransactionBuilder,
 nativeToScVal,
+scValToNative,
 } from "@stellar/stellar-sdk";
 import { Api, Server } from "@stellar/stellar-sdk/rpc";
 
@@ -24,6 +25,11 @@ event_hash: string;
 creator: string;
 reference_id: string;
 timestamp: string;
+};
+
+type VerifyProofInvocationInput = {
+proof_id: string;
+event_hash: string;
 };
 
 function readRequiredEnv(name: string) {
@@ -62,11 +68,7 @@ secretKeyExposed: false,
 };
 }
 
-export async function submitCreateProofToStellarTestnet(
-proof: CreateProofInvocationInput
-) {
-const config = getStellarServerConfig();
-
+function getVerifiedSourceKeypair(config: StellarServerConfig) {
 if (config.network !== "testnet") {
 throw new Error("Only Stellar testnet invocation is enabled.");
 }
@@ -78,6 +80,15 @@ throw new Error(
 "API caller public key does not match the configured secret key."
 );
 }
+
+return sourceKeypair;
+}
+
+export async function submitCreateProofToStellarTestnet(
+proof: CreateProofInvocationInput
+) {
+const config = getStellarServerConfig();
+const sourceKeypair = getVerifiedSourceKeypair(config);
 
 const server = new Server(STELLAR_TESTNET_RPC_URL);
 const contract = new Contract(config.contractId);
@@ -138,5 +149,65 @@ transactionHash: sendResponse.hash,
 stellarStatus: finalResponse.status,
 secretKeyExposed: false,
 proof,
+};
+}
+
+export async function verifyProofOnStellarTestnet(
+proof: VerifyProofInvocationInput
+) {
+const config = getStellarServerConfig();
+const sourceKeypair = getVerifiedSourceKeypair(config);
+
+const server = new Server(STELLAR_TESTNET_RPC_URL);
+const contract = new Contract(config.contractId);
+const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
+
+const builtTransaction = new TransactionBuilder(sourceAccount, {
+fee: BASE_FEE,
+networkPassphrase: Networks.TESTNET,
+})
+.addOperation(
+contract.call(
+"verify_proof",
+nativeToScVal(proof.proof_id, { type: "string" }),
+nativeToScVal(proof.event_hash, { type: "string" })
+)
+)
+.setTimeout(30)
+.build();
+
+const simulation = await server.simulateTransaction(builtTransaction);
+
+if ("error" in simulation) {
+throw new Error("Stellar verification simulation failed: " + simulation.error);
+}
+
+const retval = (
+simulation as {
+result?: {
+retval?: Parameters<typeof scValToNative>[0];
+};
+}
+).result?.retval;
+
+if (!retval) {
+throw new Error("Stellar verification simulation returned no result.");
+}
+
+const verified = Boolean(scValToNative(retval));
+
+return {
+success: true,
+mode: "stellar_testnet_verification",
+message: verified
+? "Proof hash verified against the deployed Stellar testnet contract."
+: "Proof hash did not match the stored Stellar testnet proof record.",
+network: config.network,
+contractId: config.contractId,
+apiCallerPublicKey: config.apiCallerPublicKey,
+proofId: proof.proof_id,
+eventHash: proof.event_hash,
+verified,
+secretKeyExposed: false,
 };
 }
