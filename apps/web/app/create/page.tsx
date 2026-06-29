@@ -16,6 +16,8 @@ status: string;
 created_at: string;
 };
 
+type OnchainStatus = "pending" | "ready" | "placeholder";
+
 export default function CreateProofPage() {
 const [proofType, setProofType] = useState("freelancer_milestone");
 const [title, setTitle] = useState("");
@@ -23,6 +25,7 @@ const [description, setDescription] = useState("");
 const [referenceId, setReferenceId] = useState("");
 const [creatorWallet, setCreatorWallet] = useState("");
 const [record, setRecord] = useState<ProofRecord | null>(null);
+const [onchainStatus, setOnchainStatus] = useState<OnchainStatus>("pending");
 
 async function generateHash(input: string) {
 const encoder = new TextEncoder();
@@ -64,7 +67,13 @@ setRecord({
   status: "local_proof_generated",
 });
 
+setOnchainStatus("ready");
 
+
+}
+
+function handleOnchainPlaceholder() {
+setOnchainStatus("placeholder");
 }
 
 return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
@@ -118,7 +127,12 @@ ProofSetu Protocol </a>
 
         <div>
           <span>On-chain Submission</span>
-          <strong>{record ? "Ready for next integration step" : "Pending"}</strong>
+          <strong>
+            {onchainStatus === "pending" && "Pending"}
+            {onchainStatus === "ready" && "Ready for Stellar testnet"}
+            {onchainStatus === "placeholder" &&
+              "Backend/API integration coming next"}
+          </strong>
         </div>
 
         <div>
@@ -238,12 +252,21 @@ ProofSetu Protocol </a>
             </div>
 
             <div className="hash-box">
-              <strong>Next Step</strong>
+              <strong>On-chain Submission Placeholder</strong>
               <p>
                 This proof hash is ready to be anchored to the deployed
-                Stellar testnet proof registry contract in the next frontend
+                Stellar testnet proof registry contract in the next backend
                 integration milestone.
               </p>
+
+              <button
+                className="button button-secondary"
+                type="button"
+                onClick={handleOnchainPlaceholder}
+                style={{ marginTop: "14px" }}
+              >
+                Prepare for Stellar Testnet Anchoring
+              </button>
             </div>
 
             <pre className="json-preview">
