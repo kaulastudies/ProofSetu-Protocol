@@ -170,6 +170,10 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 
 ![Create Proof Page with Stellar Config](screenshots/create-proof-stellar-config.png)
 
+### Create Proof On-chain Placeholder
+
+![Create Proof On-chain Placeholder](screenshots/create-proof-onchain-placeholder.png)
+
 ### Verify Sample Page with Stellar Section
 
 ![Verify Sample Page with Stellar Section](screenshots/verify-sample-stellar-section.png)
