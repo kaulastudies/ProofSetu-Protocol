@@ -102,10 +102,10 @@ networkPassphrase: Networks.TESTNET,
 contract.call(
 "create_proof",
 nativeToScVal(proof.proof_id, { type: "string" }),
-nativeToScVal(proof.event_hash, { type: "string" }),
 nativeToScVal(proof.proof_type, { type: "string" }),
-nativeToScVal(proof.reference_id, { type: "string" }),
+nativeToScVal(proof.event_hash, { type: "string" }),
 nativeToScVal(proof.creator, { type: "string" }),
+nativeToScVal(proof.reference_id, { type: "string" }),
 nativeToScVal(proof.timestamp, { type: "string" })
 )
 )
@@ -179,7 +179,9 @@ nativeToScVal(proof.event_hash, { type: "string" })
 const simulation = await server.simulateTransaction(builtTransaction);
 
 if ("error" in simulation) {
-throw new Error("Stellar verification simulation failed: " + simulation.error);
+throw new Error(
+"Stellar verification simulation failed: " + simulation.error
+);
 }
 
 const retval = (
