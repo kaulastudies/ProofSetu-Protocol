@@ -58,6 +58,8 @@ Stellar provides fast, low-cost, open financial infrastructure suitable for real
 
 ProofSetu uses Stellar/Soroban to make workflow proof records verifiable, transparent, and ready to connect with future payment, milestone, invoice, escrow, remittance, or stablecoin settlement flows.
 
+
+
 ## MVP Scope
 
 The first version will include:
@@ -79,6 +81,44 @@ The first version will include:
 4. Invoice approval proof
 5. Hospital document submission proof
 6. AI-assisted decision proof
+
+## Stellar Testnet Deployment
+
+ProofSetu Protocol Phase 2 includes a deployed Soroban proof registry contract on Stellar testnet.
+
+The contract has been built, tested locally, deployed to Stellar testnet, and invoked successfully.
+
+### Contract Details
+
+* Network: Stellar testnet
+* Contract ID: `CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ`
+* Wasm hash: `743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166`
+* Deployer public address: `GAT2L4GYPN2TST44AQA6QFVNWB4BUM7SXC73B4D5Y7PA4YRNHCLL`
+
+### Deployment Transactions
+
+* Deployment transaction: `5ee448eb186c966fe6965fa7282b94d78a96df4e596dd9d0f6326cf3d0f6261b`
+* Create proof transaction: `8a7fd049fcaf57e0c438a1b521b08cd30afe762cd6b74c172c302faccd98f132`
+
+### Verified Testnet Flow
+
+The deployed contract was tested successfully with a sample proof record.
+
+* `create_proof` returned `true`
+* `get_proof` returned the stored proof record
+* `verify_proof` with correct hash returned `true`
+* `verify_proof` with wrong hash returned `false`
+
+Sample proof ID:
+
+`PS-TESTNET-001`
+
+Correct hash:
+
+`sample_testnet_hash_001`
+
+This confirms that ProofSetu Protocol can create, retrieve, and verify workflow proof records on Stellar testnet.
+
 
 ## Documentation
 
