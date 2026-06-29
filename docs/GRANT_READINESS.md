@@ -331,30 +331,67 @@ ProofSetu converts important workflow events into verifiable proof records. It g
 
 ## Suggested Grant Ask
 
-Recommended early-stage grant ask:
+Recommended grant ask:
 
-`$10,000 – $25,000`
+`$30,000`
 
 Reasoning:
 
-ProofSetu already has a live Stellar testnet MVP, contract deployment, frontend integration, and dynamic verification. Funding would support moving from MVP to a polished open-source protocol with better verification UX, wallet-based proof ownership, proof history, templates, documentation, and mainnet-readiness review.
+ProofSetu Protocol has already completed a working Stellar/Soroban testnet MVP. The project includes a live web demo, deployed Soroban proof registry contract, backend-assisted Stellar testnet proof submission, real transaction hash return, dynamic on-chain proof verification, security-safe environment variable handling, documentation, screenshots, and practical real-world use cases.
+
+The requested grant would support moving ProofSetu from a working testnet MVP into a polished open-source protocol layer with stronger UX, wallet-based proof ownership, proof history, reusable workflow templates, public proof lookup, developer documentation, and mainnet-readiness preparation.
 
 ---
 
 ## Proposed Grant Milestones
 
+Total requested grant amount:
+
+`$30,000`
+
+### Budget Summary
+
+| Milestone   |                           Focus Area |        Amount |
+| ----------- | -----------------------------------: | ------------: |
+| Milestone 1 |            Public Testnet MVP Polish |      `$7,500` |
+| Milestone 2 | Proof History and Workflow Templates |      `$8,000` |
+| Milestone 3 |         Wallet and Organization Flow |      `$8,000` |
+| Milestone 4 |             Mainnet Readiness Review |      `$6,500` |
+| **Total**   |                                      | **`$30,000`** |
+
+---
+
 ### Milestone 1 — Public Testnet MVP Polish
+
+Amount:
+
+`$7,500`
+
+Goal:
+
+Polish the current Stellar testnet MVP into a clean public release suitable for developers, grant reviewers, and early users.
 
 Deliverables:
 
 * Clean UI polish
 * Improved verification page
-* README and docs polish
+* README and documentation polish
 * Demo walkthrough
 * Architecture diagram
-* v0.3.0 release
+* Final screenshots
+* `v0.3.0` GitHub release
 
-### Milestone 2 — Proof History and Templates
+---
+
+### Milestone 2 — Proof History and Workflow Templates
+
+Amount:
+
+`$8,000`
+
+Goal:
+
+Add reusable proof workflows and proof history so users can create structured proof records for real-world use cases.
 
 Deliverables:
 
@@ -364,8 +401,19 @@ Deliverables:
 * Grant deliverable proof template
 * Invoice approval proof template
 * NGO transparency proof template
+* Improved proof record structure
+
+---
 
 ### Milestone 3 — Wallet and Organization Flow
+
+Amount:
+
+`$8,000`
+
+Goal:
+
+Add wallet-based proof ownership and organization-level workflows so teams, founders, NGOs, freelancers, and businesses can manage proofs more clearly.
 
 Deliverables:
 
@@ -374,8 +422,19 @@ Deliverables:
 * Creator proof ownership
 * Public proof lookup
 * Better access and verification model
+* Improved frontend flow for proof creators and proof viewers
+
+---
 
 ### Milestone 4 — Mainnet Readiness Review
+
+Amount:
+
+`$6,500`
+
+Goal:
+
+Prepare ProofSetu for responsible mainnet planning through security review, documentation, deployment checks, and production-readiness work.
 
 Deliverables:
 
@@ -384,6 +443,7 @@ Deliverables:
 * Better error handling
 * Documentation for developers
 * Production deployment plan
+* Mainnet readiness summary
 
 ---
 
