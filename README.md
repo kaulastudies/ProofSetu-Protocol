@@ -178,6 +178,10 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 
 ![Verify Sample Page with Stellar Section](screenshots/verify-sample-stellar-section.png)
 
+### Create Proof API Scaffold Response
+
+![Create Proof API Scaffold Response](screenshots/create-proof-api-scaffold-response.png)
+
 ## License
 
 MIT
