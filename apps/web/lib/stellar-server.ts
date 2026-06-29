@@ -1,3 +1,15 @@
+import {
+BASE_FEE,
+Contract,
+Keypair,
+Networks,
+TransactionBuilder,
+nativeToScVal,
+} from "@stellar/stellar-sdk";
+import { Api, Server } from "@stellar/stellar-sdk/rpc";
+
+const STELLAR_TESTNET_RPC_URL = "https://soroban-testnet.stellar.org/";
+
 type StellarServerConfig = {
 network: string;
 contractId: string;
@@ -5,11 +17,20 @@ apiCallerPublicKey: string;
 apiCallerSecretKey: string;
 };
 
+type CreateProofInvocationInput = {
+proof_id: string;
+proof_type: string;
+event_hash: string;
+creator: string;
+reference_id: string;
+timestamp: string;
+};
+
 function readRequiredEnv(name: string) {
 const value = process.env[name]?.trim();
 
 if (!value) {
-throw new Error(`Missing required environment variable: ${name}`);
+throw new Error("Missing required environment variable: " + name);
 }
 
 return value;
@@ -38,5 +59,84 @@ contractId,
 apiCallerPublicKey,
 apiCallerSecretKeyConfigured: Boolean(apiCallerSecretKey),
 secretKeyExposed: false,
+};
+}
+
+export async function submitCreateProofToStellarTestnet(
+proof: CreateProofInvocationInput
+) {
+const config = getStellarServerConfig();
+
+if (config.network !== "testnet") {
+throw new Error("Only Stellar testnet invocation is enabled.");
+}
+
+const sourceKeypair = Keypair.fromSecret(config.apiCallerSecretKey);
+
+if (sourceKeypair.publicKey() !== config.apiCallerPublicKey) {
+throw new Error(
+"API caller public key does not match the configured secret key."
+);
+}
+
+const server = new Server(STELLAR_TESTNET_RPC_URL);
+const contract = new Contract(config.contractId);
+const sourceAccount = await server.getAccount(sourceKeypair.publicKey());
+
+const builtTransaction = new TransactionBuilder(sourceAccount, {
+fee: BASE_FEE,
+networkPassphrase: Networks.TESTNET,
+})
+.addOperation(
+contract.call(
+"create_proof",
+nativeToScVal(proof.proof_id, { type: "string" }),
+nativeToScVal(proof.event_hash, { type: "string" }),
+nativeToScVal(proof.proof_type, { type: "string" }),
+nativeToScVal(proof.reference_id, { type: "string" }),
+nativeToScVal(proof.creator, { type: "string" }),
+nativeToScVal(proof.timestamp, { type: "string" })
+)
+)
+.setTimeout(30)
+.build();
+
+const preparedTransaction = await server.prepareTransaction(builtTransaction);
+
+preparedTransaction.sign(sourceKeypair);
+
+const sendResponse = await server.sendTransaction(preparedTransaction);
+
+if (sendResponse.status !== "PENDING") {
+throw new Error(
+"Stellar transaction was not accepted as pending. Status: " +
+sendResponse.status
+);
+}
+
+const finalResponse = await server.pollTransaction(sendResponse.hash, {
+attempts: 10,
+sleepStrategy: function () {
+return 1000;
+},
+});
+
+if (finalResponse.status !== Api.GetTransactionStatus.SUCCESS) {
+throw new Error(
+"Stellar transaction did not succeed. Status: " + finalResponse.status
+);
+}
+
+return {
+success: true,
+mode: "stellar_testnet_invocation",
+message: "Proof was submitted to the deployed Stellar testnet contract.",
+network: config.network,
+contractId: config.contractId,
+apiCallerPublicKey: config.apiCallerPublicKey,
+transactionHash: sendResponse.hash,
+stellarStatus: finalResponse.status,
+secretKeyExposed: false,
+proof,
 };
 }
