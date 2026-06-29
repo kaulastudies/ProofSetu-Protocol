@@ -91,6 +91,7 @@ The first version will include:
 * [Project Status](PROJECT_STATUS.md)
 * [Demo Walkthrough](docs/DEMO_WALKTHROUGH.md)
 * [Grant Readiness](docs/GRANT_READINESS.md)
+* [Phase 2 Stellar Plan](docs/PHASE_2_STELLAR_PLAN.md)
 
 ## Example Proof Records
 
