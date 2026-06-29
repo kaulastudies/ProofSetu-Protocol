@@ -24,14 +24,17 @@ min-height: 100vh;
 }
 
 .navbar {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 24px 8%;
-border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-background: rgba(7, 17, 31, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(7, 17, 31, 0.88);
+  backdrop-filter: blur(16px);
 }
-
 .logo {
 font-weight: 700;
 font-size: 20px;
@@ -46,13 +49,12 @@ color: #cbd5e1;
 }
 
 .hero {
-padding: 90px 8% 70px;
-display: grid;
-grid-template-columns: 1.2fr 0.8fr;
-gap: 48px;
-align-items: center;
+  padding: 70px 8% 56px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px;
+  align-items: center;
 }
-
 .badge {
 display: inline-block;
 padding: 8px 14px;
@@ -147,9 +149,9 @@ font-weight: 700;
 }
 
 .section {
-padding: 72px 8%;
+  padding: 72px 8%;
+  scroll-margin-top: 100px;
 }
-
 .section h2 {
 font-size: clamp(30px, 4vw, 48px);
 letter-spacing: -0.04em;
