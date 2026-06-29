@@ -145,6 +145,78 @@ This confirms that ProofSetu Protocol can create, retrieve, and verify workflow 
 ProofSetu Protocol is currently in the repository setup and documentation stage.
 
 Next planned step: prepare the v0.3.0 release with updated documentation, screenshots, and grant-readiness notes.
+## Roadmap
+
+### Completed
+
+* Repository setup
+* Documentation setup
+* Web MVP live on Vercel
+* Homepage
+* Create Proof page
+* Local SHA-256 proof hash generation
+* Generated proof record JSON output
+* Public sample verification page
+* Stellar testnet contract information page
+* Soroban proof registry contract scaffold
+* Local Soroban contract tests
+* Stellar testnet contract deployment
+* Initial testnet contract invocation
+* Frontend Stellar testnet config section
+* API scaffold for on-chain proof submission
+* Safe environment variable check API
+* Backend invocation security notes
+* Server-side Stellar configuration helper
+* Backend-assisted Stellar testnet proof submission
+* Real Stellar transaction hash returned to frontend
+* Create Proof UI updated for Stellar testnet submission
+* Dynamic on-chain proof verification API
+* Verify On-chain frontend page
+* Successful proof verification using proof ID and event hash
+* Negative verification test using wrong hash
+* Secret key stored server-side and not exposed
+* README screenshots updated for Stellar submission and verification
+
+### Current Milestone
+
+Prepare ProofSetu Protocol `v0.3.0` release.
+
+This release should represent the first complete Stellar testnet MVP:
+
+* Create proof locally
+* Generate SHA-256 event hash
+* Submit proof to Stellar testnet
+* Return real transaction hash
+* Verify proof dynamically using proof ID and event hash
+* Display verified true/false result publicly
+* Keep secret keys server-side only
+
+### Next
+
+* Update `PROJECT_STATUS.md`
+* Update `docs/GRANT_READINESS.md`
+* Update `docs/DEMO_WALKTHROUGH.md`
+* Add final verification screenshot to README
+* Create `v0.3.0` GitHub release
+* Prepare final grant-readiness summary
+* Prepare demo video script
+* Add final issue comments and close completed integration issue
+
+### Later
+
+* Public proof lookup by transaction hash
+* Better verification result styling
+* Wallet-based user flow
+* Database-backed proof history
+* Organization dashboard
+* File hash support
+* Grant deliverable workflow template
+* Invoice approval workflow template
+* NGO transparency dashboard
+* Hospital document submission workflow
+* AI decision proof trail
+* Mainnet readiness review
+
 ## Screenshots
 
 ### Homepage
