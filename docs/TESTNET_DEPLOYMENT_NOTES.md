@@ -1,34 +1,28 @@
 # Stellar Testnet Deployment Notes
 
-This document tracks the planned Stellar/Soroban testnet deployment flow for the ProofSetu Protocol proof registry contract.
+This document tracks the Stellar/Soroban testnet deployment flow for the ProofSetu Protocol proof registry contract.
 
-The contract has already been built and tested locally in GitHub Codespaces. The next step is to deploy it to Stellar testnet.
+The contract has been built, tested locally, deployed to Stellar testnet, and invoked successfully.
 
 ---
 
 ## Current Status
 
-Status: Deployment notes prepared. Testnet deployment pending.
+Status: Stellar testnet deployment completed successfully.
 
 Completed:
 
 * Stellar CLI installed
-* wasm32v1-none target confirmed
+* wasm32v1-none Rust target confirmed
 * Proof registry contract scaffold added
 * Contract build validated
 * Local tests added
 * Local tests passed
-* Build and test results documented
-
-Pending:
-
-* Create testnet identity
-* Fund testnet identity
-* Deploy contract to Stellar testnet
-* Record contract ID
-* Record deployment transaction/hash
-* Invoke contract functions on testnet
-* Update README and grant readiness documents
+* Contract deployed to Stellar testnet
+* Testnet proof record created
+* Testnet proof record retrieved
+* Correct hash verification returned true
+* Wrong hash verification returned false
 
 ---
 
@@ -58,249 +52,146 @@ Validated build result:
 
 ---
 
-## Step 1 — Go to Contract Folder
-
-From the repository root:
-
-```bash
-cd contracts/proof-registry
-```
-
----
-
-## Step 2 — Confirm Stellar CLI
-
-```bash
-stellar --version
-```
-
-Expected:
-
-```txt
-stellar 27.0.0
-```
-
----
-
-## Step 3 — Use Stellar Testnet
-
-```bash
-stellar network use testnet
-```
-
----
-
-## Step 4 — Create Funded Testnet Identity
-
-Create a testnet deployer identity:
-
-```bash
-stellar keys generate proofsetu-deployer --network testnet --fund
-```
-
-Check the public address:
-
-```bash
-stellar keys address proofsetu-deployer
-```
-
-List available keys:
-
-```bash
-stellar keys ls -l
-```
-
-Important: this is for testnet only. Do not use a real mainnet wallet or private key.
-
----
-
-## Step 5 — Build Contract
-
-From the contract folder:
-
-```bash
-stellar contract build
-```
-
-Expected Wasm output:
-
-```txt
-target/wasm32v1-none/release/proof_registry.wasm
-```
-
----
-
-## Step 6 — Deploy Contract to Testnet
-
-Deploy the proof registry contract:
-
-```bash
-stellar contract deploy \
-  --wasm target/wasm32v1-none/release/proof_registry.wasm \
-  --source-account proofsetu-deployer \
-  --network testnet \
-  --alias proof_registry
-```
-
-Expected result:
-
-```txt
-Contract ID: C...
-```
-
-Record the contract ID below after deployment.
-
----
-
 ## Deployment Result
+
+Contract deployed successfully to Stellar testnet.
 
 Contract ID:
 
-```txt
-Pending
-```
+CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ
 
 Deployment transaction/hash:
 
-```txt
-Pending
-```
+5ee448eb186c966fe6965fa7282b94d78a96df4e596dd9d0f6326cf3d0f6261b
+
+Create proof transaction/hash:
+
+8a7fd049fcaf57e0c438a1b521b08cd30afe762cd6b74c172c302faccd98f132
+
+Wasm hash:
+
+743718b322e6dc81af3677bafadd236f4a85a76c87171a7847c582f25b400166
 
 Deployment date:
 
-```txt
-Pending
-```
+2026-06-29
 
-Deployer testnet address:
+Deployer testnet public address:
 
-```txt
-Pending
-```
+GAT2L4GYPN2TST44AQA6QFVNWB4BUM7SXC73B4D5Y7PA4YRNHCLL
 
 ---
 
-## Step 7 — Invoke create_proof
+## Testnet Invocation Result
 
-After deployment, create a sample proof record on testnet.
+The deployed proof registry contract was tested successfully on Stellar testnet.
 
-```bash
-stellar contract invoke \
-  --id proof_registry \
-  --source-account proofsetu-deployer \
-  --network testnet \
-  -- \
-  create_proof \
-  --proof_id PS-TESTNET-001 \
-  --proof_type freelancer_milestone \
-  --event_hash sample_testnet_hash_001 \
-  --creator proofsetu_testnet_deployer \
-  --reference_id PROOFSETU-TESTNET-001 \
-  --timestamp 2026-06-29T00:00:00Z
-```
+Test proof ID:
 
-If the CLI simulates first and asks to send the transaction, rerun with the send option shown by the CLI.
+PS-TESTNET-001
 
----
+Stored proof record:
 
-## Step 8 — Invoke get_proof
+{
+"creator": "proofsetu_testnet_deployer",
+"event_hash": "sample_testnet_hash_001",
+"proof_type": "freelancer_milestone",
+"reference_id": "PROOFSETU-TESTNET-001",
+"status": "created",
+"timestamp": "2026-06-29T00:00:00Z"
+}
 
-```bash
-stellar contract invoke \
-  --id proof_registry \
-  --source-account proofsetu-deployer \
-  --network testnet \
-  -- \
-  get_proof \
-  --proof_id PS-TESTNET-001
-```
+Function results:
 
-Expected result:
+* create_proof returned true
+* get_proof returned stored proof record
+* verify_proof with correct hash returned true
+* verify_proof with wrong hash returned false
 
-The contract should return the stored proof record.
+This confirms that the testnet contract can create, retrieve, and verify workflow proof records.
 
 ---
 
-## Step 9 — Invoke verify_proof
+## Deployment Commands Used
 
-```bash
-stellar contract invoke \
-  --id proof_registry \
-  --source-account proofsetu-deployer \
-  --network testnet \
-  -- \
-  verify_proof \
-  --proof_id PS-TESTNET-001 \
-  --event_hash sample_testnet_hash_001
-```
+Go to contract folder:
 
-Expected result:
+cd contracts/proof-registry
 
-```txt
-true
-```
+Build contract:
 
----
-
-## Troubleshooting Notes
-
-### Build requires overflow checks
-
-If the build fails with overflow-checks error, confirm Cargo.toml includes:
-
-```toml
-[profile.release]
-overflow-checks = true
-```
-
-### Missing Wasm file
-
-If the Wasm file is missing, run:
-
-```bash
 stellar contract build
-```
 
-from:
+Deploy contract:
 
-```txt
-contracts/proof-registry
-```
+stellar contract deploy 
+--wasm target/wasm32v1-none/release/proof_registry.wasm 
+--source-account proofsetu-deployer 
+--network testnet 
+--alias proof_registry
 
-### Identity not found
+Create proof:
 
-If the deployer identity is not found, run:
+stellar contract invoke 
+--id CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ 
+--source-account proofsetu-deployer 
+--network testnet 
+-- 
+create_proof 
+--proof_id PS-TESTNET-001 
+--proof_type freelancer_milestone 
+--event_hash sample_testnet_hash_001 
+--creator proofsetu_testnet_deployer 
+--reference_id PROOFSETU-TESTNET-001 
+--timestamp 2026-06-29T00:00:00Z
 
-```bash
-stellar keys ls -l
-```
+Get proof:
 
-If needed, recreate the testnet identity:
+stellar contract invoke 
+--id CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ 
+--source-account proofsetu-deployer 
+--network testnet 
+-- 
+get_proof 
+--proof_id PS-TESTNET-001
 
-```bash
-stellar keys generate proofsetu-deployer --network testnet --fund
-```
+Verify correct hash:
 
-### Read-only simulation message
+stellar contract invoke 
+--id CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ 
+--source-account proofsetu-deployer 
+--network testnet 
+-- 
+verify_proof 
+--proof_id PS-TESTNET-001 
+--event_hash sample_testnet_hash_001
 
-For read-only functions, the CLI may return a simulated result without submitting a transaction. This is expected for read-only contract interactions.
+Verify wrong hash:
+
+stellar contract invoke 
+--id CD7VTK6VVMXCBWHOGPGWEHG3KFOLNSYMV3DNGK5BDMRWH74HGKLZRGGZ 
+--source-account proofsetu-deployer 
+--network testnet 
+-- 
+verify_proof 
+--proof_id PS-TESTNET-001 
+--event_hash wrong_hash_001
 
 ---
 
 ## Safety Notes
 
-* Use testnet only.
-* Do not use mainnet funds.
-* Do not paste private keys into GitHub.
-* Do not commit seed phrases.
-* Do not store patient, client, invoice, or private document data on-chain.
-* Only proof hashes and minimal metadata should be stored.
+* This deployment uses Stellar testnet only.
+* No mainnet funds were used.
+* No private keys or seed phrases should be committed.
+* Private documents must not be stored on-chain.
+* Only hashes and minimal verification metadata should be stored.
 
 ---
 
-## Next Documentation Updates After Deployment
+## Next Documentation Updates
 
-After successful deployment, update:
+After this deployment result, update:
 
 * README.md
 * PROJECT_STATUS.md
@@ -308,10 +199,6 @@ After successful deployment, update:
 * docs/PHASE_2_STELLAR_PLAN.md
 * contracts/proof-registry/README.md
 
-Add:
+Next development task:
 
-* Contract ID
-* Deployment date
-* Testnet proof example
-* Sample invocation result
-* Screenshots if available
+Connect the Web MVP to the deployed Soroban proof registry contract.
