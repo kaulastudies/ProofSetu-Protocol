@@ -3,6 +3,7 @@ import { STELLAR_TESTNET_CONFIG } from "../../lib/stellar-testnet";
 export default function TestnetPage() {
 return ( <main className="page"> <nav className="navbar"> <a className="logo" href="/">
 ProofSetu Protocol </a>
+    
 
 
     <div className="nav-links">
