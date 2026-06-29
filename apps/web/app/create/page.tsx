@@ -20,8 +20,8 @@ type OnchainStatus =
 | "pending"
 | "ready"
 | "submitting"
-| "scaffold_success"
-| "scaffold_error";
+| "stellar_success"
+| "stellar_error";
 
 type ApiResponse = {
 success?: boolean;
@@ -30,6 +30,10 @@ mode?: string;
 message?: string;
 contractId?: string;
 network?: string;
+apiCallerPublicKey?: string;
+transactionHash?: string;
+stellarStatus?: string;
+secretKeyExposed?: boolean;
 proof?: {
 proof_id?: string;
 proof_type?: string;
@@ -98,7 +102,7 @@ setOnchainStatus("ready");
 
 }
 
-async function handleOnchainPlaceholder() {
+async function handleStellarSubmit() {
 if (!record) {
 return;
 }
@@ -127,19 +131,20 @@ try {
 
   setApiResponse(data);
 
-  if (response.ok && data.success) {
-    setOnchainStatus("scaffold_success");
+  if (response.ok && data.success && data.transactionHash) {
+    setOnchainStatus("stellar_success");
   } else {
-    setOnchainStatus("scaffold_error");
+    setOnchainStatus("stellar_error");
   }
 } catch {
   setApiResponse({
     success: false,
-    mode: "scaffold_only",
-    message: "Unable to reach API scaffold.",
+    mode: "stellar_testnet_invocation",
+    message: "Unable to submit proof to Stellar testnet.",
+    secretKeyExposed: false,
   });
 
-  setOnchainStatus("scaffold_error");
+  setOnchainStatus("stellar_error");
 }
 
 
@@ -156,14 +161,29 @@ if (onchainStatus === "ready") {
 }
 
 if (onchainStatus === "submitting") {
-  return "Sending proof payload to API scaffold";
+  return "Submitting proof to Stellar testnet";
 }
 
-if (onchainStatus === "scaffold_success") {
-  return "API scaffold received proof payload";
+if (onchainStatus === "stellar_success") {
+  return "Submitted to Stellar testnet";
 }
 
-return "API scaffold returned an error";
+return "Stellar testnet submission failed";
+
+
+}
+
+function getModeText() {
+if (onchainStatus === "stellar_success") {
+return "Local proof + real Stellar testnet transaction";
+}
+
+
+if (onchainStatus === "submitting") {
+  return "Submitting to Stellar testnet";
+}
+
+return "Local proof + backend-assisted Stellar API";
 
 
 }
@@ -184,27 +204,26 @@ ProofSetu Protocol </a>
 
   <section className="form-section">
     <div className="form-header">
-      <div className="badge">Web MVP Feature</div>
+      <div className="badge">Stellar Testnet MVP</div>
 
       <h1>Create a proof record</h1>
 
       <p>
-        Generate a local proof record and SHA-256 hash for a real-world
-        workflow event. The page now also sends the generated proof payload
-        to a safe API scaffold before live Stellar testnet invocation is
-        added.
+        Generate a local proof record, create a SHA-256 event hash, and
+        submit the proof to the deployed ProofSetu Soroban contract on
+        Stellar testnet through a secure backend-assisted API route.
       </p>
     </div>
 
     <div className="verify-card" style={{ marginBottom: "24px" }}>
-      <div className="verify-status">Stellar Testnet Ready</div>
+      <div className="verify-status">Stellar Testnet Live</div>
 
       <h2>Proof anchoring status</h2>
 
       <p className="verify-description">
-        ProofSetu has a deployed Soroban proof registry contract on Stellar
-        testnet. This page generates the proof hash locally and can now send
-        the proof payload to a backend/API scaffold.
+        ProofSetu now supports backend-assisted proof submission to a
+        deployed Soroban proof registry contract on Stellar testnet. Secret
+        keys stay server-side and are never exposed in the frontend.
       </p>
 
       <div className="verify-grid">
@@ -225,7 +244,7 @@ ProofSetu Protocol </a>
 
         <div>
           <span>Current Mode</span>
-          <strong>Local proof + API scaffold</strong>
+          <strong>{getModeText()}</strong>
         </div>
       </div>
 
@@ -238,6 +257,13 @@ ProofSetu Protocol </a>
         <strong>Network</strong>
         <code>{STELLAR_TESTNET_CONFIG.network}</code>
       </div>
+
+      {apiResponse?.transactionHash && (
+        <div className="hash-box">
+          <strong>Latest Stellar Transaction Hash</strong>
+          <code>{apiResponse.transactionHash}</code>
+        </div>
+      )}
     </div>
 
     <div className="form-grid">
@@ -340,30 +366,45 @@ ProofSetu Protocol </a>
             </div>
 
             <div className="hash-box">
-              <strong>API Scaffold Submission</strong>
+              <strong>Stellar Testnet Submission</strong>
               <p>
-                This sends the generated proof payload to the live API
-                scaffold. Real Stellar testnet transaction submission will
-                be added in the next backend integration milestone.
+                This sends the generated proof payload to the backend API,
+                which submits the proof to the deployed Soroban contract on
+                Stellar testnet.
               </p>
 
               <button
                 className="button button-secondary"
                 type="button"
-                onClick={handleOnchainPlaceholder}
+                onClick={handleStellarSubmit}
                 disabled={onchainStatus === "submitting"}
                 style={{ marginTop: "14px" }}
               >
                 {onchainStatus === "submitting"
-                  ? "Sending to API Scaffold..."
-                  : "Send Proof Payload to API Scaffold"}
+                  ? "Submitting to Stellar Testnet..."
+                  : "Submit Proof to Stellar Testnet"}
               </button>
             </div>
 
             {apiResponse && (
               <div className="hash-box">
-                <strong>API Scaffold Response</strong>
+                <strong>Stellar Submission Response</strong>
                 <p>{apiResponse.message}</p>
+
+                {apiResponse.transactionHash && (
+                  <div className="proof-row">
+                    <span>Transaction Hash</span>
+                    <span>{apiResponse.transactionHash}</span>
+                  </div>
+                )}
+
+                {apiResponse.stellarStatus && (
+                  <div className="proof-row">
+                    <span>Stellar Status</span>
+                    <span>{apiResponse.stellarStatus}</span>
+                  </div>
+                )}
+
                 <pre className="json-preview">
                   {JSON.stringify(apiResponse, null, 2)}
                 </pre>
