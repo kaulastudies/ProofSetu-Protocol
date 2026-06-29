@@ -187,6 +187,10 @@ Next planned step: build the first web MVP with proof creation, hash generation,
 
 ![Create Proof Stellar Testnet Success](screenshots/create-proof-stellar-testnet-success.png)
 
+### Verify On-chain Proof Success
+
+![Verify On-chain Proof Success](screenshots/verify-onchain-proof-success.png)
+
 ## License
 
 MIT
