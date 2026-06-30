@@ -1,3 +1,7 @@
+git add README.md docs/GRANT_READINESS.md
+git commit -m "Clean duplicate demo video links"
+git push origin main
+git status
 # ProofSetu Protocol — Grant Readiness
 
 ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
