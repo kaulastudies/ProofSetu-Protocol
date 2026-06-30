@@ -267,3 +267,8 @@ This release should represent the first complete Stellar testnet MVP:
 ## License
 
 MIT
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+

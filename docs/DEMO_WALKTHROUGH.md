@@ -300,3 +300,8 @@ The current demo is ready for `v0.3.0` release preparation.
 ProofSetu now demonstrates a complete Stellar testnet MVP:
 
 Create proof → generate event hash → submit to Stellar testnet → return transaction hash → verify proof dynamically.
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+

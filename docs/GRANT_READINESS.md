@@ -483,3 +483,8 @@ ProofSetu Protocol is ready for a `v0.3.0` release and grant-readiness packaging
 The project now demonstrates a real Stellar/Soroban use case with working testnet deployment, backend-assisted proof submission, and dynamic on-chain verification.
 
 The next priority is documentation polish, release packaging, and demo presentation.
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+

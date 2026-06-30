@@ -75,3 +75,8 @@ Initial focus:
 3. Build a simple web MVP
 4. Add Stellar testnet integration
 5. Prepare for grant submission
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+

@@ -230,3 +230,8 @@ ProofSetu Protocol can now create a workflow proof, generate a SHA-256 event has
 * Hospital document submission workflow
 * AI decision proof trail
 * Mainnet readiness review
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+

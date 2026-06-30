@@ -400,3 +400,8 @@ It is not only an idea or design document. It has:
 * Public documentation
 * Security-conscious backend design
 * Grant-ready roadmap
+
+## Demo Video
+
+ProofSetu Protocol v0.3.0 demo video: https://youtu.be/7EKzgLwDhE0
+
