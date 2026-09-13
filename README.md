@@ -10,14 +10,14 @@ ProofSetu Protocol is an open-source verifiable workflow proof layer built on St
 
 ## Current MVP Flow
 
-1. Visit the homepage.
-2. Open the Create Proof page.
-3. Enter proof details for a workflow event.
-4. Generate a local SHA-256 proof hash.
-5. View the generated proof record and JSON output.
-6. Open the public sample verification page.
+1. Create a workflow proof record and SHA-256 document/event hash.
+2. Submit or anchor the proof through the Stellar/Soroban testnet integration.
+3. Retrieve the proof record from the deployed Soroban registry.
+4. Verify the stored hash against the expected value.
+5. Reject verification when the supplied hash does not match.
+6. Inspect the public verification result and transaction evidence.
 
-The current MVP uses local proof generation only. Stellar/Soroban testnet anchoring will be added in Phase 2.
+The current v0.3 flow includes a deployed Stellar testnet Soroban contract and verified `create_proof`, `get_proof`, and `verify_proof` behavior. Local hashing remains part of the client workflow, while testnet anchoring provides the external verification layer.
 
 
 ## Problem
