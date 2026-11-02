@@ -1,12 +1,13 @@
-git add README.md docs/GRANT_READINESS.md
-git commit -m "Clean duplicate demo video links"
-git push origin main
-git status
 # ProofSetu Protocol — Grant Readiness
+
+## Release reconciliation — 2 November 2026
+
+[v0.3.0](https://github.com/kaulastudies/ProofSetu-Protocol/releases/tag/v0.3.0) was published on 29 June 2026. The next milestone is [v0.4.0, issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6), which remains open. Earlier release-preparation instructions below are historical and superseded. Published release notes establish a release checkpoint; this correction does not revalidate current deployment health, retained testnet state, security or grant eligibility. Wallet ownership remains future scope.
+
 
 ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
 
-The project is now grant-ready at the Stellar testnet MVP level because it demonstrates a working end-to-end proof flow:
+The published testnet MVP provides technical materials for review. A release does not establish eligibility for a particular grant. The recorded flow is:
 
 Create proof → generate event hash → submit to Stellar testnet → receive transaction hash → verify proof dynamically using Proof ID and Event Hash.
 
@@ -14,7 +15,7 @@ Create proof → generate event hash → submit to Stellar testnet → receive t
 
 ## Current Grant Readiness Status
 
-Status: Ready for v0.3.0 release preparation
+Status: v0.3.0 published; programme-specific eligibility and submission readiness unverified.
 
 ProofSetu has completed the core technical proof-of-concept required for a serious open-source Stellar/Soroban MVP.
 

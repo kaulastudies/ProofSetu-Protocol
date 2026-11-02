@@ -1,5 +1,10 @@
 # ProofSetu Protocol — Project Status
 
+## Release reconciliation — 2 November 2026
+
+[v0.3.0](https://github.com/kaulastudies/ProofSetu-Protocol/releases/tag/v0.3.0) was published on 29 June 2026. The next milestone is [v0.4.0, issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6), which remains open. Earlier release-preparation instructions below are historical and superseded. Published release notes establish a release checkpoint; this correction does not revalidate current deployment health, retained testnet state, security or grant eligibility. Wallet ownership remains future scope.
+
+
 ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
 
 The project has moved beyond a local Web MVP and now supports real backend-assisted Stellar testnet proof submission and dynamic on-chain verification.
@@ -10,7 +15,7 @@ The project has moved beyond a local Web MVP and now supports real backend-assis
 
 Status: Stellar testnet MVP completed
 
-Current milestone: Prepare `v0.3.0` release
+Current milestone: v0.4.0, tracked in issue #6 (open).
 
 ProofSetu currently supports:
 
@@ -187,34 +192,9 @@ Current screenshots include:
 
 
 
-## Next Milestone
+## Next milestone
 
-Prepare `v0.3.0` release.
-
-Tasks:
-
-* Update README
-* Update project status
-* Update grant-readiness notes
-* Update demo walkthrough
-* Confirm all screenshots are visible in GitHub README
-* Confirm Vercel pages are live
-* Confirm APIs are safe
-* Create `v0.3.0` GitHub release
-* Prepare final grant-readiness summary
-* Prepare demo video script
-
-
-
-## v0.3.0 Release Goal
-
-`v0.3.0` should represent the first complete Stellar testnet MVP.
-
-Release summary:
-
-ProofSetu Protocol can now create a workflow proof, generate a SHA-256 event hash, submit the proof to a deployed Soroban contract on Stellar testnet, return a real Stellar transaction hash, and verify the proof dynamically using Proof ID and Event Hash.
-
-
+Meet [issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6) acceptance criteria for v0.4.0. The v0.3.0 release-preparation milestone is already satisfied by the published release.
 
 ## Later Roadmap
 
