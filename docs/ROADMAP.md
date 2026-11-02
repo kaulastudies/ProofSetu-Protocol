@@ -1,5 +1,10 @@
 # Roadmap
 
+## Release reconciliation — 2 November 2026
+
+[v0.3.0](https://github.com/kaulastudies/ProofSetu-Protocol/releases/tag/v0.3.0) was published on 29 June 2026. The next milestone is [v0.4.0, issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6), which remains open. Earlier release-preparation instructions below are historical and superseded. Published release notes establish a release checkpoint; this correction does not revalidate current deployment health, retained testnet state, security or grant eligibility. Wallet ownership remains future scope.
+
+
 ProofSetu Protocol will be developed step by step, starting with a simple web MVP and later adding Stellar/Soroban integration.
 
 ---
@@ -23,7 +28,7 @@ Create a clean open-source repository with basic documentation and example proof
 
 ### Status
 
-In progress.
+Released repository checkpoint; see v0.1.0 and subsequent releases above.
 
 ---
 
@@ -33,7 +38,7 @@ In progress.
 
 Build a simple working web demo for creating and verifying proof records.
 
-### Planned Features
+### Historical scope / remaining work
 
 * Landing page
 * Create Proof page
@@ -56,7 +61,7 @@ Users should be able to create a proof record and verify it through a public pro
 
 Anchor proof records on Stellar/Soroban testnet.
 
-### Planned Features
+### Historical scope / remaining work
 
 * Soroban proof registry contract
 * Stellar testnet deployment
@@ -78,7 +83,7 @@ Users should be able to create and verify proof records using Stellar/Soroban te
 
 Prepare ProofSetu Protocol for public review, community feedback, and grant submission.
 
-### Planned Features
+### Historical scope / remaining work
 
 * Public demo deployment
 * Screenshots
@@ -100,7 +105,7 @@ The project should be ready for Stellar Community Fund-style review and public e
 
 Prepare the protocol for production-grade usage.
 
-### Planned Features
+### Historical scope / remaining work
 
 * Mainnet deployment plan
 * Security review checklist

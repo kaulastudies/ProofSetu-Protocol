@@ -1,5 +1,10 @@
 # ProofSetu Protocol
 
+## Release reconciliation — 2 November 2026
+
+[v0.3.0](https://github.com/kaulastudies/ProofSetu-Protocol/releases/tag/v0.3.0) was published on 29 June 2026. The next milestone is [v0.4.0, issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6), which remains open. Earlier release-preparation instructions below are historical and superseded. Published release notes establish a release checkpoint; this correction does not revalidate current deployment health, retained testnet state, security or grant eligibility. Wallet ownership remains future scope.
+
+
 ProofSetu Protocol is an open-source verifiable workflow proof layer built on Stellar/Soroban.
 ## Live Demo
 
@@ -143,9 +148,9 @@ This confirms that ProofSetu Protocol can create, retrieve, and verify workflow 
 
 ## Current Status
 
-ProofSetu Protocol is currently in the repository setup and documentation stage.
+ProofSetu Protocol has a published v0.3.0 Stellar testnet MVP.
 
-Next planned step: prepare the v0.3.0 release with updated documentation, screenshots, and grant-readiness notes.
+Next tracked step: meet the v0.4.0 acceptance criteria in issue #6.
 ## Roadmap
 
 ### Completed
@@ -178,30 +183,9 @@ Next planned step: prepare the v0.3.0 release with updated documentation, screen
 * Secret key stored server-side and not exposed
 * README screenshots updated for Stellar submission and verification
 
-### Current Milestone
+### Current milestone
 
-Prepare ProofSetu Protocol `v0.3.0` release.
-
-This release should represent the first complete Stellar testnet MVP:
-
-* Create proof locally
-* Generate SHA-256 event hash
-* Submit proof to Stellar testnet
-* Return real transaction hash
-* Verify proof dynamically using proof ID and event hash
-* Display verified true/false result publicly
-* Keep secret keys server-side only
-
-### Next
-
-* Update `PROJECT_STATUS.md`
-* Update `docs/GRANT_READINESS.md`
-* Update `docs/DEMO_WALKTHROUGH.md`
-* Add final verification screenshot to README
-* Create `v0.3.0` GitHub release
-* Prepare final grant-readiness summary
-* Prepare demo video script
-* Add final issue comments and close completed integration issue
+[v0.4.0, issue #6](https://github.com/kaulastudies/ProofSetu-Protocol/issues/6) tracks proof history, wallet ownership, public lookup, UI polish and workflow templates. Documentation, screenshots and a v0.4.0 release are also required before closure.
 
 ### Later
 
